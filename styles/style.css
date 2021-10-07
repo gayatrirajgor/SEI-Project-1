@@ -44,7 +44,13 @@ header {
 }
 
 .grid div.coin {
-  background-image: url('assets/coin.gif');
+  background-image: url('../assets/coin.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.mario {
+  background-image: url('../assets/mario-img.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
