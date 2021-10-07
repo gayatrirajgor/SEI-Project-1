@@ -8,13 +8,13 @@ function init(){
   const squareCount = width * width
   const squares = []
 
-  const coins = []
-  const coinClass = 'coin'
-  const coinsPosition = 11
+  const treats = []
+  const treatClass = 'treat'
+  const treatPositions = 11
 
-  const marioClass = 'mario'
-  const marioStartingPosition = 32
-  let marioCurrentPosition = 32
+  const dogClass = 'dog'
+  const dogStartingPosition = 32
+  let dogCurrentPosition = 32
 
   function createGrid(){
     for (let i = 0; i < squareCount; i++){
@@ -24,52 +24,48 @@ function init(){
       grid.appendChild(square)
       squares.push(square)
     }
-    addMario(marioStartingPosition)
-    addCoin(coinsPosition)
+    addDog(dogStartingPosition)
+    addTreat(treatPositions)
   }
 
-  function addMario(marioPosition){
+  function addDog(dogPosition){
     // console.log('square[marioPosition]', squares[marioPosition])
-    squares[marioPosition].classList.add(marioClass)
+    squares[dogPosition].classList.add(dogClass)
   }
 
-  function removeMario(position){
-    squares[position].classList.remove(marioClass)
+  function removeDog(position){
+    squares[position].classList.remove(dogClass)
   }
 
-  function addCoin(coinPosition){
+  function addTreat(treatPosition){
     // console.log('square[coinPosition]', squares[coinPosition])
-    squares[coinPosition].classList.add(coinClass)
+    squares[treatPosition].classList.add(treatClass)
   }
 
-  function addEnemy(){
+  // function addEnemy(){
 
-  }
+  // }
 
 
   function handleKeyUp(event){
     const key = event.keyCode
-    removeMario(marioCurrentPosition)
+    removeDog(dogCurrentPosition)
 
     if (key === 39){
-      marioCurrentPosition++
+      dogCurrentPosition++
     } else if (key === 37){
-      marioCurrentPosition--
-    } else if (key === 38 && marioCurrentPosition >= width){
-      marioCurrentPosition -= width
-    } else if (key === 40 && marioCurrentPosition + width <= width * width - 1){
-      marioCurrentPosition += width
+      dogCurrentPosition--
+    } else if (key === 38 && dogCurrentPosition >= width){
+      dogCurrentPosition -= width
+    } else if (key === 40 && dogCurrentPosition + width <= width * width - 1){
+      dogCurrentPosition += width
     } else {
       console.log('INVALID KEY PRESSED')
     }
 
-    addMario(marioCurrentPosition)
+    addDog(dogCurrentPosition)
   }
   
-  // function removeCoin(){
-
-  // }
-
 
   document.addEventListener('keyup', handleKeyUp)
   createGrid()

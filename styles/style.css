@@ -24,7 +24,6 @@ header {
   flex-direction: row;
 }
 
-
 #logo-img {
   width: 500px;
   height: 150px;
@@ -58,13 +57,13 @@ header {
   width: 10%;
 }
 
-.grid div.coin {
+.grid div.treat {
   background-image: url('../assets/treat.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.grid div.mario {
+.grid div.dog {
   background-image: url('../assets/dog.jpeg');
   background-repeat: no-repeat;
   background-size: contain;
