@@ -5,12 +5,25 @@
 body {
   height: 100vh;
   margin: 0;
+  background-image: url('../assets/bg-image.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
+/* HEADER */
 header {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+
+.display-board{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
 
 #logo-img {
   width: 500px;
@@ -18,6 +31,7 @@ header {
 
 }
 
+/* GRID */
 .grid-wrapper {
   height: 100vh;
   display: flex;
@@ -27,7 +41,8 @@ header {
 
 .grid {
   align-items: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 3);
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
   height: 100%;
@@ -44,13 +59,18 @@ header {
 }
 
 .grid div.coin {
-  background-image: url('../assets/coin.gif');
+  background-image: url('../assets/treat.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .grid div.mario {
-  background-image: url('../assets/mario-img.png');
+  background-image: url('../assets/dog.jpeg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.grid div.mushroom {
+  background-image: url('../assets/mushroom-img.png');
   background-repeat: no-repeat;
   background-size: contain;
 }

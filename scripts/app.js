@@ -8,7 +8,10 @@ function init(){
   const squareCount = width * width
   const squares = []
 
+  const coins = []
   const coinClass = 'coin'
+  const coinsPosition = 11
+
   const marioClass = 'mario'
   const marioStartingPosition = 32
   let marioCurrentPosition = 32
@@ -22,6 +25,7 @@ function init(){
       squares.push(square)
     }
     addMario(marioStartingPosition)
+    addCoin(coinsPosition)
   }
 
   function addMario(marioPosition){
@@ -32,6 +36,17 @@ function init(){
   function removeMario(position){
     squares[position].classList.remove(marioClass)
   }
+
+  function addCoin(coinPosition){
+    // console.log('square[coinPosition]', squares[coinPosition])
+    squares[coinPosition].classList.add(coinClass)
+  }
+
+  function addEnemy(){
+
+  }
+
+
   function handleKeyUp(event){
     const key = event.keyCode
     removeMario(marioCurrentPosition)
@@ -50,9 +65,10 @@ function init(){
 
     addMario(marioCurrentPosition)
   }
-  function addCoin(){
-    
-  }
+  
+  // function removeCoin(){
+
+  // }
 
 
   document.addEventListener('keyup', handleKeyUp)
