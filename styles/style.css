@@ -21,14 +21,18 @@ header {
 .display-board{
   display: flex;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
 }
 
-#logo-img {
+button {
+  
+}
+
+/* #logo-img {
   width: 500px;
   height: 150px;
 
-}
+} */
 
 /* GRID */
 .grid-wrapper {

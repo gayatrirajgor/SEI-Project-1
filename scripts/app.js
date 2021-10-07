@@ -2,6 +2,7 @@ function init(){
   // console.log('JS Connected')
 
   const grid = document.querySelector('.grid')
+  const button = document.querySelector('button')
   // console.log('grid:', grid)
 
   const width = 10
@@ -15,6 +16,7 @@ function init(){
   const dogClass = 'dog'
   const dogStartingPosition = 32
   let dogCurrentPosition = 32
+
 
   function createGrid(){
     for (let i = 0; i < squareCount; i++){
@@ -65,9 +67,14 @@ function init(){
 
     addDog(dogCurrentPosition)
   }
+
+  function handleClick(){
+    
+  }
   
 
   document.addEventListener('keyup', handleKeyUp)
+  document.addEventListener('click', handleClick)
   createGrid()
 
 }
