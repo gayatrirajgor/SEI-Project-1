@@ -22,7 +22,7 @@ function init(){
     for (let i = 0; i < squareCount; i++){
       const square = document.createElement('div')
       // console.log('SQUARE:', square)
-      // square.innerText = i
+      square.innerText = i
       grid.appendChild(square)
       squares.push(square)
     }
@@ -42,6 +42,10 @@ function init(){
   function addTreat(treatPosition){
     // console.log('square[coinPosition]', squares[coinPosition])
     squares[treatPosition].classList.add(treatClass)
+  }
+
+  function removeTreat(position){
+
   }
 
   // function addEnemy(){
@@ -69,9 +73,8 @@ function init(){
   }
 
   function handleClick(){
-    
+
   }
-  
 
   document.addEventListener('keyup', handleKeyUp)
   document.addEventListener('click', handleClick)
