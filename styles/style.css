@@ -1,10 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   height: 100vh;
   margin: 0;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+}
+
 #logo-img {
-  text-align: center;
+  width: 500px;
+  height: 150px;
+
 }
 
 .grid-wrapper {
@@ -21,8 +32,8 @@ body {
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 700px;
-  width: 700px;
+  height: 600px;
+  width: 600px;
 }
 
 .grid div {
@@ -30,4 +41,10 @@ body {
   flex-grow: 1;
   height: 10%;
   width: 10%;
+}
+
+.grid div.coin {
+  background-image: url('assets/coin.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
