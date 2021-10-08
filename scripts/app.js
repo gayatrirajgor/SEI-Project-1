@@ -1,6 +1,4 @@
 function init(){
-  // console.log('JS Connected')
-
   const grid = document.querySelector('.grid')
   // console.log('grid:', grid)
   const button = document.querySelector('button')
@@ -35,13 +33,14 @@ function init(){
   const hooverClass = 'hoover'
   const blinkClass = 'blink'
   const hooverStartingPositions = [90, 9] //36]
-  let hooverCurrentPosition = 90
+  let hooverCurrentPosition 
   const hoovers = []
 
   // * Ball
   const ballClass = 'ball'
   const ballPositions = [3, 50, 67, 93]
 
+  // * GRID
   function createGrid(){
     for (let i = 0; i < squareCount; i++){
       const square = document.createElement('div')
@@ -56,6 +55,7 @@ function init(){
   }
 
   // const cells = document.querySelectorAll('.square')
+  // * FENCE
   function createFence(){
     fencesPosition.forEach((fence) => {
       squares[fence].classList.add(fenceClass)
@@ -64,6 +64,7 @@ function init(){
     })
   }
 
+  // * DOG FUNCTIONS
   function addDog(dogPosition){
     // console.log('square[dogPosition]', squares[dogPosition])
     squares[dogPosition].classList.add(dogClass)
@@ -73,6 +74,7 @@ function init(){
     squares[position].classList.remove(dogClass)
   }
 
+  // * TREAT FUNCTIONS
   function addTreat(){
     // console.log('square[treatPosition]', squares[treatPosition])
     treatPositions.forEach((treat) => {
@@ -91,6 +93,7 @@ function init(){
     })
   }
 
+  // * HOOVER FUNCTIONS
   function addHoover(){
     // console.log('square[hooverPosition]', squares[hooverPosition])
     hooverStartingPositions.forEach((hoover) => {
@@ -104,6 +107,7 @@ function init(){
     
   }
 
+  // * BALL FUNCTIONS
   function addBall(){
     ballPositions.forEach((ball) => {
       squares[ball].classList.add(ballClass)
@@ -114,9 +118,9 @@ function init(){
     ballPositions.forEach((ball) => {
       if (squares[ball].classList.contains(dogClass)){
         squares[ball].classList.remove(ballClass)
-        // squares[hoovers].classList.add(blinkClass)
         scoreCount.innerText = Number(scoreCount.innerText) + 50
-        //make hoover flash
+        // squares[hoovers].classList.add(blinkClass)
+        console.log(blinkClass)
       }
     })
   }

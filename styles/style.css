@@ -120,8 +120,7 @@ main {
 .grid div.hoover {
   background-image: url('../assets/hoover.jpeg');
 }
-
-.blink {
+.grid div.hoover.blink{
   animation: blink 1s infinite;
 }
 
