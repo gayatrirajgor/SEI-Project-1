@@ -18,7 +18,7 @@ function init(){
 
   // * Treats
   const treatClass = 'treat'
-  const treatPositions = [11, 12, 13]
+  const treatPositions = [14, 18, 21, 31, 41, 42, 43, 53, 54, 61, 62, 63, 64]
   const treats = []
 
   // * Dog
@@ -28,7 +28,7 @@ function init(){
 
   // * Fence
   const fenceClass = 'fence'
-  const fencesPosition = [36, 26, 45] 
+  const fencesPosition = [11, 12, 13, 45, 51, 52, 55, 65, 72, 73, 74, 75, 76] 
   const fences = []
 
   // * Hoover
@@ -98,11 +98,11 @@ function init(){
     //moving right
     if (key === 39 && !squares[dogCurrentPosition].classList.contains(fenceClass)){
       dogCurrentPosition++
-    } else if (key === 37){ //moving left
+    } else if (key === 37 && !squares[dogCurrentPosition].classList.contains(fenceClass)){ //moving left
       dogCurrentPosition--
-    } else if (key === 38 && dogCurrentPosition >= width){ //moving up
+    } else if (key === 38 && dogCurrentPosition >= width && !squares[dogCurrentPosition].classList.contains(fenceClass)){ //moving up
       dogCurrentPosition -= width
-    } else if (key === 40 && dogCurrentPosition + width <= width * width - 1){ //moving down
+    } else if (key === 40 && dogCurrentPosition + width <= width * width - 1 && !squares[dogCurrentPosition].classList.contains(fenceClass)){ //moving down
       dogCurrentPosition += width
     } else {
       console.log('INVALID KEY PRESSED')
