@@ -18,7 +18,7 @@ function init(){
 
   // * Treats
   const treatClass = 'treat'
-  const treatPositions = [14, 18, 21, 31, 41, 42, 43, 53, 54, 61, 62, 63, 64]
+  const treatPositions = [14, 18, 21, 31, 41, 42, 43, 53, 54, 61, 62, 63, 64, 71]
   const treats = []
 
   // * Dog
@@ -33,8 +33,12 @@ function init(){
 
   // * Hoover
   const hooverClass = 'hoover'
-  const hooverStartingPosition = 90
+  const hooverStartingPositions = [90, 9, 35]
   let hooverCurrentPosition = 90
+
+  // * Ball
+  const ballClass = 'ball'
+  const ballPositions = [3, 50, 66, 93]
 
   function createGrid(){
     for (let i = 0; i < squareCount; i++){
@@ -46,8 +50,7 @@ function init(){
       squares.push(square)
     }
     addDog(dogStartingPosition)
-    // addTreat(treatPositions)
-    addHoover(hooverStartingPosition)
+    // addHoover(hooverStartingPositions)
   }
 
   // const cells = document.querySelectorAll('.square')
@@ -86,9 +89,17 @@ function init(){
     })
   }
 
-  function addHoover(hooverPosition){
+  function addHoover(){
     // console.log('square[hooverPosition]', squares[hooverPosition])
-    squares[hooverPosition].classList.add(hooverClass)
+    hooverStartingPositions.forEach((hoover) => {
+      squares[hoover].classList.add(hooverClass)
+    })
+  }
+
+  function addBall(){
+    ballPositions.forEach((ball) => {
+      squares[ball].classList.add(ballClass)
+    })
   }
 
   function handleKeyUp(event){
@@ -121,5 +132,7 @@ function init(){
   createGrid()
   createFence()
   addTreat()
+  addHoover()
+  addBall()
 }
 window.addEventListener('DOMContentLoaded', init)

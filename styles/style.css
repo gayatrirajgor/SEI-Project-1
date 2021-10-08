@@ -114,3 +114,7 @@ button {
 .grid div.fence {
   background-image: url('../assets/fence.png');
 }
+
+.grid div.ball {
+  background-image: url('../assets/ball.gif');
+}
