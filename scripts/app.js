@@ -14,6 +14,8 @@ function init(){
   const squareCount = width * width
   const squares = []
 
+  // * Maze tiles
+
   // * Treats
   const treats = []
   const treatClass = 'treat'
@@ -24,16 +26,20 @@ function init(){
   const dogStartingPosition = 32
   let dogCurrentPosition = 32
 
+  // * Fence
+  const fenceClass = 'fence'
+  // const fencesPosition = [36, 26] 
+  const fences = []
+
   // * Hoover
   const hooverClass = 'hoover'
   const hooverStartingPosition = 90
   let hooverCurrentPosition = 90
 
-  // * Score
-
   function createGrid(){
     for (let i = 0; i < squareCount; i++){
       const square = document.createElement('div')
+      square.classList.add('square')
       // console.log('SQUARE:', square)
       square.innerText = i
       grid.appendChild(square)
@@ -42,6 +48,19 @@ function init(){
     addDog(dogStartingPosition)
     addTreat(treatPositions)
     addHoover(hooverStartingPosition)
+    // createFence(fencesPosition)
+  }
+
+  const cells = document.querySelectorAll('.square')
+
+  function createFence(){
+    cells.forEach((cell) => {
+      if (cell.indexOf(36) && cell.indexOf(26)){
+        console.log(cell.findIndex(36))
+        cell.classList.add(fenceClass)
+        fences.push(cell)
+      }
+    })
   }
 
   function addDog(dogPosition){
@@ -70,12 +89,11 @@ function init(){
     squares[hooverPosition].classList.add(hooverClass)
   }
 
-
   function handleKeyUp(event){
     const key = event.keyCode
     removeDog(dogCurrentPosition)
     
-    if (key === 39){
+    if (key === 39 && dogCurrentPosition !== 35){
       dogCurrentPosition++
     } else if (key === 37){
       dogCurrentPosition--
@@ -98,6 +116,6 @@ function init(){
   document.addEventListener('keyup', handleKeyUp)
   document.addEventListener('click', handleClick)
   createGrid()
-
+  createFence()
 }
 window.addEventListener('DOMContentLoaded', init)

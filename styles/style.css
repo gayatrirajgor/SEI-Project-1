@@ -101,3 +101,9 @@ button {
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+.grid div.fence {
+  background-image: url('../assets/fence.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
