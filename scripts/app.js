@@ -17,9 +17,9 @@ function init(){
   // * Maze tiles
 
   // * Treats
-  const treats = []
   const treatClass = 'treat'
-  const treatPositions = 11
+  const treatPositions = [11, 12, 13]
+  const treats = []
 
   // * Dog
   const dogClass = 'dog'
@@ -28,7 +28,7 @@ function init(){
 
   // * Fence
   const fenceClass = 'fence'
-  // const fencesPosition = [36, 26] 
+  const fencesPosition = [36, 26, 45] 
   const fences = []
 
   // * Hoover
@@ -46,20 +46,16 @@ function init(){
       squares.push(square)
     }
     addDog(dogStartingPosition)
-    addTreat(treatPositions)
+    // addTreat(treatPositions)
     addHoover(hooverStartingPosition)
-    // createFence(fencesPosition)
   }
 
-  const cells = document.querySelectorAll('.square')
-
+  // const cells = document.querySelectorAll('.square')
   function createFence(){
-    cells.forEach((cell) => {
-      if (cell.indexOf(36) && cell.indexOf(26)){
-        console.log(cell.findIndex(36))
-        cell.classList.add(fenceClass)
-        fences.push(cell)
-      }
+    fencesPosition.forEach((fence) => {
+      squares[fence].classList.add(fenceClass)
+      fences.push(fence) //pushes individual fence into an array of fences
+      // console.log(fences)
     })
   }
 
@@ -72,16 +68,22 @@ function init(){
     squares[position].classList.remove(dogClass)
   }
 
-  function addTreat(treatPosition){
+  function addTreat(){
     // console.log('square[treatPosition]', squares[treatPosition])
-    squares[treatPosition].classList.add(treatClass)
+    treatPositions.forEach((treat) => {
+      squares[treat].classList.add(treatClass)
+      treats.push(treat) //pushes individual treat into an array of treats
+      // console.log(treats)
+    })
   }
 
-  function removeTreat(position){
-    if (squares[position].classList.contains(dogClass)) {
-      squares[position].classList.remove(treatClass)
-      scoreCount.innerText = Number(scoreCount.innerText) + 20
-    }
+  function removeTreat(){
+    treatPositions.forEach((treat) => {
+      if (squares[treat].classList.contains(dogClass)){
+        squares[treat].classList.remove(treatClass)
+        scoreCount.innerText = Number(scoreCount.innerText) + 20
+      }
+    })
   }
 
   function addHoover(hooverPosition){
@@ -93,13 +95,14 @@ function init(){
     const key = event.keyCode
     removeDog(dogCurrentPosition)
     
-    if (key === 39 && dogCurrentPosition !== 35){
+    //moving right
+    if (key === 39 && !squares[dogCurrentPosition].classList.contains(fenceClass)){
       dogCurrentPosition++
-    } else if (key === 37){
+    } else if (key === 37){ //moving left
       dogCurrentPosition--
-    } else if (key === 38 && dogCurrentPosition >= width){
+    } else if (key === 38 && dogCurrentPosition >= width){ //moving up
       dogCurrentPosition -= width
-    } else if (key === 40 && dogCurrentPosition + width <= width * width - 1){
+    } else if (key === 40 && dogCurrentPosition + width <= width * width - 1){ //moving down
       dogCurrentPosition += width
     } else {
       console.log('INVALID KEY PRESSED')
@@ -117,5 +120,6 @@ function init(){
   document.addEventListener('click', handleClick)
   createGrid()
   createFence()
+  addTreat()
 }
 window.addEventListener('DOMContentLoaded', init)

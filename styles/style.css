@@ -49,12 +49,25 @@ button {
   height: 100vh;
 } */
 
+/* RULES */
 .rules {
   align-items: center;
   border: 1px solid black;
   height: 20vh;
   width: 30vw;
   color: white;
+}
+.rules h2 {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.rules p {
+  font-size: 20px;
+}
+
+#points {
+  color: yellow;
 }
 
 /* GRID */
@@ -83,27 +96,21 @@ button {
   flex-grow: 1;
   height: 10%;
   width: 10%;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .grid div.treat {
   background-image: url('../assets/treat.png');
-  background-repeat: no-repeat;
-  background-size: contain;
 }
 
 .grid div.dog {
   background-image: url('../assets/dog.jpeg');
-  background-repeat: no-repeat;
-  background-size: contain;
 }
 .grid div.hoover {
   background-image: url('../assets/hoover.jpeg');
-  background-repeat: no-repeat;
-  background-size: contain;
 }
 
 .grid div.fence {
   background-image: url('../assets/fence.png');
-  background-repeat: no-repeat;
-  background-size: contain;
 }
