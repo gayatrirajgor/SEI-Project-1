@@ -5,18 +5,25 @@ function init(){
   const button = document.querySelector('button')
   // console.log('grid:', grid)
 
+  // * Grid
   const width = 10
   const squareCount = width * width
   const squares = []
 
+  // * Treats
   const treats = []
   const treatClass = 'treat'
   const treatPositions = 11
 
+  // * Dog
   const dogClass = 'dog'
   const dogStartingPosition = 32
   let dogCurrentPosition = 32
 
+  // * Hoover
+  const hooverClass = 'hoover'
+  const hooverStartingPosition = 90
+  let hooverCurrentPosition = 90
 
   function createGrid(){
     for (let i = 0; i < squareCount; i++){
@@ -28,10 +35,11 @@ function init(){
     }
     addDog(dogStartingPosition)
     addTreat(treatPositions)
+    addHoover(hooverStartingPosition)
   }
 
   function addDog(dogPosition){
-    // console.log('square[marioPosition]', squares[marioPosition])
+    // console.log('square[dogPosition]', squares[dogPosition])
     squares[dogPosition].classList.add(dogClass)
   }
 
@@ -40,7 +48,7 @@ function init(){
   }
 
   function addTreat(treatPosition){
-    // console.log('square[coinPosition]', squares[coinPosition])
+    // console.log('square[treatPosition]', squares[treatPosition])
     squares[treatPosition].classList.add(treatClass)
   }
 
@@ -50,9 +58,10 @@ function init(){
     }
   }
 
-  // function addEnemy(){
-
-  // }
+  function addHoover(hooverPosition){
+    // console.log('square[hooverPosition]', squares[hooverPosition])
+    squares[hooverPosition].classList.add(hooverClass)
+  }
 
 
   function handleKeyUp(event){
