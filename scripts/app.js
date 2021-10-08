@@ -2,8 +2,12 @@ function init(){
   // console.log('JS Connected')
 
   const grid = document.querySelector('.grid')
-  const button = document.querySelector('button')
   // console.log('grid:', grid)
+  const button = document.querySelector('button')
+  const scoreCount = document.getElementById('score')
+  // console.log(scoreCount)
+  const livesCount = document.getElementById('lives')
+  // console.log(livesCount)
 
   // * Grid
   const width = 10
@@ -24,6 +28,8 @@ function init(){
   const hooverClass = 'hoover'
   const hooverStartingPosition = 90
   let hooverCurrentPosition = 90
+
+  // * Score
 
   function createGrid(){
     for (let i = 0; i < squareCount; i++){
@@ -55,6 +61,7 @@ function init(){
   function removeTreat(position){
     if (squares[position].classList.contains(dogClass)) {
       squares[position].classList.remove(treatClass)
+      scoreCount.innerText = Number(scoreCount.innerText) + 20
     }
   }
 
