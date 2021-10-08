@@ -18,23 +18,25 @@ function init(){
 
   // * Treats
   const treatClass = 'treat'
-  const treatPositions = [14, 18, 21, 31, 41, 42, 43, 53, 54, 61, 62, 63, 64, 71]
+  const treatPositions = [1, 2, 4, 6, 7, 8, 10, 13, 14, 15, 16, 19, 23, 24, 25, 26, 28, 29, 30, 31, 36, 37, 38, 40, 41, 42, 45, 46, 47, 48, 51, 52, 53, 54, 55, 56, 57, 58, 59, 62, 64, 65, 70, 71, 72, 77, 78, 79, 81, 82, 83, 84, 85, 86, 88, 89, 91, 94, 96, 97, 98]
   const treats = []
 
   // * Dog
   const dogClass = 'dog'
-  const dogStartingPosition = 32
-  let dogCurrentPosition = 32
+  const dogStartingPosition = 0
+  let dogCurrentPosition = 0
 
   // * Fence
   const fenceClass = 'fence'
-  const fencesPosition = [11, 12, 13, 45, 51, 52, 55, 65, 72, 73, 74, 75, 76] 
+  const fencesPosition = [5, 11, 12, 17, 18, 20, 21, 22, 27, 32, 33, 34, 35, 39, 43, 44, 49, 60, 61, 63, 66, 68, 69, 73, 74, 75, 76, 80, 87, 92, 95, 99] 
   const fences = []
 
   // * Hoover
   const hooverClass = 'hoover'
-  const hooverStartingPositions = [90, 9, 35]
+  const blinkClass = 'blink'
+  const hooverStartingPositions = [90, 9] //36]
   let hooverCurrentPosition = 90
+  const hoovers = []
 
   // * Ball
   const ballClass = 'ball'
@@ -93,7 +95,13 @@ function init(){
     // console.log('square[hooverPosition]', squares[hooverPosition])
     hooverStartingPositions.forEach((hoover) => {
       squares[hoover].classList.add(hooverClass)
+      hoovers.push(hoover)
+      // console.log(hoovers)
     })
+  }
+
+  function moveHoover(){
+    
   }
 
   function addBall(){
@@ -102,12 +110,23 @@ function init(){
     })
   }
 
+  function removeBall(){
+    ballPositions.forEach((ball) => {
+      if (squares[ball].classList.contains(dogClass)){
+        squares[ball].classList.remove(ballClass)
+        // squares[hoovers].classList.add(blinkClass)
+        scoreCount.innerText = Number(scoreCount.innerText) + 50
+        //make hoover flash
+      }
+    })
+  }
+
   function handleKeyUp(event){
     const key = event.keyCode
     removeDog(dogCurrentPosition)
     
     //moving right
-    if (key === 39 && !squares[dogCurrentPosition].classList.contains(fenceClass)){
+    if (key === 39 && !(squares[dogCurrentPosition].classList.contains(fenceClass))){
       dogCurrentPosition++
     } else if (key === 37 && !squares[dogCurrentPosition].classList.contains(fenceClass)){ //moving left
       dogCurrentPosition--
@@ -121,10 +140,11 @@ function init(){
     
     addDog(dogCurrentPosition)
     removeTreat(treatPositions)
+    removeBall(ballPositions)
   }
 
   function handleClick(){
-
+    moveHoover()
   }
 
   document.addEventListener('keyup', handleKeyUp)

@@ -18,10 +18,13 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
+  /* height: 20%; */
 }
 
 h1 {
   font-size: 70px;
+  font-family: 'ZCOOL KuaiLe', cursive;
 }
 
 .display-board{
@@ -31,7 +34,14 @@ h1 {
 }
 
 button {
-  
+  background-color: green;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid green;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
 }
 
 /* #logo-img {
@@ -40,19 +50,19 @@ button {
 
 } */
 
-/* main {
+main {
   display: flex;
   justify-content: center;
-  flex-direction: row;
+  /* flex-direction: row; */
   align-content: center;
-  flex-wrap: wrap;
-  height: 100vh;
-} */
+  /* flex-wrap: wrap; */
+  /* height: 100vh; */
+}
 
 /* RULES */
 .rules {
   align-items: center;
-  border: 1px solid black;
+  margin-left: 30px;
   height: 20vh;
   width: 30vw;
   color: white;
@@ -101,7 +111,7 @@ button {
 }
 
 .grid div.treat {
-  background-image: url('../assets/treat.png');
+  background-image: url('../assets/treat-2.jpeg');
 }
 
 .grid div.dog {
@@ -111,10 +121,27 @@ button {
   background-image: url('../assets/hoover.jpeg');
 }
 
+.blink {
+  animation: blink 1s infinite;
+}
+
 .grid div.fence {
-  background-image: url('../assets/fence.png');
+  background-image: url('../assets/fence-2.png');
 }
 
 .grid div.ball {
   background-image: url('../assets/ball.gif');
+}
+
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
