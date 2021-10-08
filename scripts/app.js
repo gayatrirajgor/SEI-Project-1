@@ -38,7 +38,7 @@ function init(){
 
   // * Ball
   const ballClass = 'ball'
-  const ballPositions = [3, 50, 66, 93]
+  const ballPositions = [3, 50, 67, 93]
 
   function createGrid(){
     for (let i = 0; i < squareCount; i++){
