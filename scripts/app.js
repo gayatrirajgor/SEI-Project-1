@@ -45,7 +45,9 @@ function init(){
   }
 
   function removeTreat(position){
-
+    if (squares[position].classList.contains(dogClass)) {
+      squares[position].classList.remove(treatClass)
+    }
   }
 
   // function addEnemy(){
@@ -56,7 +58,7 @@ function init(){
   function handleKeyUp(event){
     const key = event.keyCode
     removeDog(dogCurrentPosition)
-
+    
     if (key === 39){
       dogCurrentPosition++
     } else if (key === 37){
@@ -68,8 +70,9 @@ function init(){
     } else {
       console.log('INVALID KEY PRESSED')
     }
-
+    
     addDog(dogCurrentPosition)
+    removeTreat(treatPositions)
   }
 
   function handleClick(){

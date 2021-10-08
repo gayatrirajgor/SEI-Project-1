@@ -5,10 +5,11 @@
 body {
   height: 100vh;
   margin: 0;
-  background-image: url('../assets/bg-image.png');
+  background-image: url('../assets/bg-image.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: 'Patrick Hand', cursive;;
+  background-position: center;
+  font-family: 'Patrick Hand', cursive;
 }
 
 /* HEADER */
@@ -17,6 +18,10 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+h1 {
+  font-size: 70px;
 }
 
 .display-board{
@@ -35,8 +40,26 @@ button {
 
 } */
 
+/* main {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-content: center;
+  flex-wrap: wrap;
+  height: 100vh;
+} */
+
+.rules {
+  align-items: center;
+  border: 1px solid black;
+  height: 20vh;
+  width: 30vw;
+  color: white;
+}
+
 /* GRID */
 .grid-wrapper {
+  flex-grow: 1;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -73,8 +96,8 @@ button {
   background-repeat: no-repeat;
   background-size: contain;
 }
-.grid div.mushroom {
-  background-image: url('../assets/mushroom-img.png');
+.grid div.hoover {
+  background-image: url('../assets/hoover.jpeg');
   background-repeat: no-repeat;
   background-size: contain;
 }
