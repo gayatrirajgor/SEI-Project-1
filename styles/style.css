@@ -85,8 +85,8 @@ main {
 /* GRID */
 .grid-wrapper {
   flex-grow: 1;
-  height: 60vh;
-  width: 90vw;
+  height: 55vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,9 +125,9 @@ main {
 .grid div.hoover {
   background-image: url('../assets/hoover.jpeg');
 }
-.grid div.hetty {
+/* .grid div.hetty {
   background-image: url('../assets/hetty.jpeg');
-}
+} */
 .grid div.blink{
   animation: blink 1s infinite;
 }

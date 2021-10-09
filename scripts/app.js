@@ -13,6 +13,7 @@ function init(){
   const squares = []
 
   // * Maze tiles
+  const mazeTiles = [0, 1, 2, 3, 4, 6, 7, 8, 10, 13, 14, 15, 16, 19, 23, 24, 25, 26, 28, 29, 30, 31, 36, 37, 38, 40, 41, 42, 45, 46, 47, 48, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 62, 64, 65, 67, 70, 71, 72, 77, 78, 79, 81, 82, 83, 84, 85, 86, 88, 89, 91, 93, 94, 96, 97, 98]
 
   // * Treats
   const treatClass = 'treat'
@@ -106,9 +107,11 @@ function init(){
     })
   }
 
-  function moveHoover(){
-    
-  }
+  // function moveHoover1(){
+  //   if (hooverStartingPositions === 9){
+  //     console.log('can move')
+  //   }
+  // }
 
   // * BALL FUNCTIONS
   function addBall(){
@@ -128,6 +131,10 @@ function init(){
       }
     })
   }
+
+  // function fail(){
+    
+  // }
 
   // * KEY FUNCTIONS
   function handleKeyUp(event){
@@ -154,17 +161,17 @@ function init(){
 
   const startGameSound = document.getElementById('start-game')
 
-  function handleClick(){
+  function startGame(){
     // moveHoover()
     startGameSound.src = '../sounds/start-pacman.mp3'
     startGameSound.play()
+    moveHoover1()
     
   }
 
-  // * HOOVER MOVEMENTS
-
   document.addEventListener('keyup', handleKeyUp)
-  document.addEventListener('click', handleClick)
+  button.addEventListener('click', startGame)
+
   createGrid()
   createFence()
   addTreat()
