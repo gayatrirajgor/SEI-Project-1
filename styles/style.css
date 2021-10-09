@@ -52,12 +52,6 @@ button {
   font-size: 16px;
 }
 
-/* #logo-img {
-  width: 500px;
-  height: 150px;
-
-} */
-
 main {
   display: flex;
   justify-content: center;
@@ -130,6 +124,9 @@ main {
 }
 .grid div.hoover {
   background-image: url('../assets/hoover.jpeg');
+}
+.grid div.hetty {
+  background-image: url('../assets/hetty.jpeg');
 }
 .grid div.blink{
   animation: blink 1s infinite;

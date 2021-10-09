@@ -56,7 +56,6 @@ function init(){
     // addHoover(hooverStartingPositions)
   }
 
-  // const cells = document.querySelectorAll('.square')
   // * FENCE
   function createFence(){
     fencesPosition.forEach((fence) => {
@@ -163,7 +162,6 @@ function init(){
   }
 
   // * HOOVER MOVEMENTS
-
 
   document.addEventListener('keyup', handleKeyUp)
   document.addEventListener('click', handleClick)
