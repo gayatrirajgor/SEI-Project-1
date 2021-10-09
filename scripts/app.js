@@ -18,6 +18,7 @@ function init(){
   const treatClass = 'treat'
   const treatPositions = [1, 2, 4, 6, 7, 8, 10, 13, 14, 15, 16, 19, 23, 24, 25, 26, 28, 29, 30, 31, 36, 37, 38, 40, 41, 42, 45, 46, 47, 48, 51, 52, 53, 54, 55, 56, 57, 58, 59, 62, 64, 65, 70, 71, 72, 77, 78, 79, 81, 82, 83, 84, 85, 86, 88, 89, 91, 94, 96, 97, 98]
   const treats = []
+  const munchSound = document.getElementById('munch')
 
   // * Dog
   const dogClass = 'dog'
@@ -39,6 +40,7 @@ function init(){
   // * Ball
   const ballClass = 'ball'
   const ballPositions = [3, 50, 67, 93]
+  const balls = []
 
   // * GRID
   function createGrid(){
@@ -89,6 +91,8 @@ function init(){
       if (squares[treat].classList.contains(dogClass)){
         squares[treat].classList.remove(treatClass)
         scoreCount.innerText = Number(scoreCount.innerText) + 20
+        munchSound.src = '../sounds/munch.mp3'
+        munchSound.play()
       }
     })
   }
@@ -111,6 +115,7 @@ function init(){
   function addBall(){
     ballPositions.forEach((ball) => {
       squares[ball].classList.add(ballClass)
+      balls.push(ball)
     })
   }
 
@@ -119,12 +124,13 @@ function init(){
       if (squares[ball].classList.contains(dogClass)){
         squares[ball].classList.remove(ballClass)
         scoreCount.innerText = Number(scoreCount.innerText) + 50
-        // squares[hoovers].classList.add(blinkClass)
-        console.log(blinkClass)
+        squares[hoovers].classList.add(blinkClass)
+        console.log(hoovers)
       }
     })
   }
 
+  // * KEY FUNCTIONS
   function handleKeyUp(event){
     const key = event.keyCode
     removeDog(dogCurrentPosition)
@@ -147,9 +153,17 @@ function init(){
     removeBall(ballPositions)
   }
 
+  const startGameSound = document.getElementById('start-game')
+
   function handleClick(){
-    moveHoover()
+    // moveHoover()
+    startGameSound.src = '../sounds/start-pacman.mp3'
+    startGameSound.play()
+    
   }
+
+  // * HOOVER MOVEMENTS
+
 
   document.addEventListener('keyup', handleKeyUp)
   document.addEventListener('click', handleClick)

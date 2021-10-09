@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  
+  <audio id="start-game" loop controls></audio>
   <header>
     <!-- <img src="assets/logo.png" alt="logo" id="logo-img"> -->
     <div class="heading-container">
@@ -30,9 +30,11 @@
       <h3>Lives: <span id="lives">5</span></h3>
     </div>
   </header>
-  <br>
   
+  <br>
+
   <main>
+    <div class="overlay"></div>
     <div class="rules">
       <h2>How to play:</h2>
       <p>Help Jojo get all her treats before the hoover gets to her!</p>
@@ -40,7 +42,9 @@
       <p>Each tennis ball will give you <span id="points">50 points</span></p>
     </div>
     <div class="grid-wrapper">
-      <div class="grid"></div>
+      <div class="grid">
+        <audio id="munch"></audio>
+      </div>
     </div>
   </main>
 </body>
