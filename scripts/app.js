@@ -156,6 +156,7 @@ function init(){
     if (squares[dogCurrentPosition].classList.contains(hooverClass)){
       squares[dogCurrentPosition].classList.remove(dogClass)
       livesCount.innerText = Number(livesCount.innerText) - 1
+      console.log(livesCount)
     }
     // hoover collides with treat 
 
