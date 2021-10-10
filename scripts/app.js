@@ -13,7 +13,7 @@ function init(){
   const squares = []
 
   // * Maze tiles
-  const mazeTiles = [0, 1, 2, 3, 4, 6, 7, 8, 10, 13, 14, 15, 16, 19, 23, 24, 25, 26, 28, 29, 30, 31, 36, 37, 38, 40, 41, 42, 45, 46, 47, 48, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 62, 64, 65, 67, 70, 71, 72, 77, 78, 79, 81, 82, 83, 84, 85, 86, 88, 89, 91, 93, 94, 96, 97, 98]
+  const mazeTiles = [0, 1, 2, 3, 4, 6, 7, 8, 10, 13, 14, 15, 16, 19, 23, 24, 25, 26, 28, 29, 30, 31, 36, 37, 38, 40, 41, 42, 46, 47, 48, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 62, 64, 65, 67, 70, 71, 72, 77, 78, 79, 81, 82, 83, 84, 85, 86, 88, 89, 91, 93, 94, 96, 97, 98]
 
   // * Treats
   const treatClass = 'treat'
@@ -34,14 +34,18 @@ function init(){
   // * Hoover
   const hooverClass = 'hoover'
   const blinkClass = 'blink'
-  const hooverStartingPositions = [90, 9] //36]
-  let hooverCurrentPosition 
+  const hooverStartingPositions = [90, 9, 45] //36]
+  let hoover1CurrentPosition 
+  let hoover2CurrentPosition 
+  let hoover3CurrentPosition 
   const hoovers = []
 
   // * Ball
   const ballClass = 'ball'
   const ballPositions = [3, 50, 67, 93]
   const balls = []
+
+  let gameOver = true
 
   // * GRID
   function createGrid(){
@@ -87,14 +91,14 @@ function init(){
   }
 
   function removeTreat(){
-    treatPositions.forEach((treat) => {
-      if (squares[treat].classList.contains(dogClass)){
-        squares[treat].classList.remove(treatClass)
-        scoreCount.innerText = Number(scoreCount.innerText) + 20
-        munchSound.src = '../sounds/munch.mp3'
-        munchSound.play()
-      }
-    })
+    // treatPositions.forEach((treat) => {
+    if (squares[dogCurrentPosition].classList.contains(treatClass)){
+      squares[dogCurrentPosition].classList.remove(treatClass)
+      scoreCount.innerText = Number(scoreCount.innerText) + 20
+      // munchSound.src = '../sounds/munch.mp3'
+      // munchSound.play()
+    }
+    // })
   }
 
   // * HOOVER FUNCTIONS
@@ -122,19 +126,29 @@ function init(){
   }
 
   function removeBall(){
-    ballPositions.forEach((ball) => {
-      if (squares[ball].classList.contains(dogClass)){
-        squares[ball].classList.remove(ballClass)
-        scoreCount.innerText = Number(scoreCount.innerText) + 50
-        squares[hoovers].classList.add(blinkClass)
-        console.log(hoovers)
-      }
-    })
+    // ballPositions.forEach((ball) => {
+    if (squares[dogCurrentPosition].classList.contains(ballClass)){
+      squares[dogCurrentPosition].classList.remove(ballClass)
+      scoreCount.innerText = Number(scoreCount.innerText) + 50
+      // squares[hoovers].classList.add(blinkClass)
+      // console.log(hoovers)
+    }
+    // })
   }
 
   // function fail(){
     
   // }
+
+  // * COLLISION
+  function detectCollision(){
+    // dogs collides the hoover 
+    
+    // hoover collides with treat - if 
+
+    // 
+  }
+  //hoover hits treat
 
   // * KEY FUNCTIONS
   function handleKeyUp(event){
@@ -165,7 +179,7 @@ function init(){
     // moveHoover()
     startGameSound.src = '../sounds/start-pacman.mp3'
     startGameSound.play()
-    moveHoover1()
+    // moveHoover1()
     
   }
 

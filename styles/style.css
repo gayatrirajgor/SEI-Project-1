@@ -24,8 +24,8 @@ header {
 
 .heading-container {
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start
+  justify-content: space-around;
+  align-items: stretch;
 }
 
 h1 {
@@ -50,6 +50,7 @@ button {
   cursor: pointer;
   text-align: center;
   font-size: 16px;
+  animation: blink 3s;
 }
 
 main {
@@ -76,6 +77,10 @@ main {
 
 .rules p {
   font-size: 20px;
+}
+
+.rules li {
+  font-size: 19px;
 }
 
 #points {
