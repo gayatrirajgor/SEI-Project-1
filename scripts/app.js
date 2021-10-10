@@ -91,8 +91,8 @@ function init(){
     if (squares[dogCurrentPosition].classList.contains(treatClass)){
       squares[dogCurrentPosition].classList.remove(treatClass)
       scoreCount.innerText = Number(scoreCount.innerText) + 20
-      // munchSound.src = '../sounds/munch.mp3'
-      // munchSound.play()
+      munchSound.src = './sounds/munch.mp3'
+      munchSound.play()
     }
   }
 
@@ -125,7 +125,8 @@ function init(){
   // let timer
   //need to make hoover skip fence classes
   function moveHoover(){
-    if (hoover1CurrentPosition === 90 && !(squares[hoover1CurrentPosition - 1].classList.contains(fenceClass))){
+    // if (hoover1CurrentPosition === 90 && !(squares[hoover1CurrentPosition - 1].classList.contains(fenceClass))){
+    if (hoover1CurrentPosition === 90){
       const leftInterval = setInterval(() => {
         squares[hoover1CurrentPosition].classList.remove(hooverClass)
         hoover1CurrentPosition -= 1
@@ -150,13 +151,15 @@ function init(){
   // }
 
   // * COLLISION
-  // function detectCollision(){
-  //   // dogs collides the hoover 
-    
-  //   // hoover collides with treat - if 
+  function detectCollision(){
+    // dogs collides the hoover 
+    if (squares[dogCurrentPosition].classList.contains(hooverClass)){
+      squares[dogCurrentPosition].classList.remove(dogClass)
+      livesCount.innerText = Number(livesCount.innerText) - 1
+    }
+    // hoover collides with treat 
 
-  //   // 
-  // }
+  }
 
   // * Overlay 
   // to turn overlay on
@@ -198,8 +201,9 @@ function init(){
   function startGame(){
     moveHoover()
     off()
-    // startGameSound.src = '../sounds/start-pacman.mp3'
-    // startGameSound.play()
+    detectCollision()
+    startGameSound.src = './sounds/start-pacman.mp3'
+    startGameSound.play()
   }
 
   document.addEventListener('keyup', handleKeyUp)
