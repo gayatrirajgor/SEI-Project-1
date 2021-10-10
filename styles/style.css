@@ -50,7 +50,7 @@ button {
   cursor: pointer;
   text-align: center;
   font-size: 16px;
-  animation: blink 3s;
+  /* animation: blink 3s; */
 }
 
 main {
@@ -60,6 +60,11 @@ main {
   align-content: center;
   /* flex-wrap: wrap; */
   /* height: 100vh; */
+}
+
+/* OVERLAY */
+.overlay {
+  display: none;
 }
 
 /* RULES */

@@ -35,9 +35,9 @@ function init(){
   const hooverClass = 'hoover'
   const blinkClass = 'blink'
   const hooverStartingPositions = [90, 9, 45] //36]
-  let hoover1CurrentPosition 
-  let hoover2CurrentPosition 
-  let hoover3CurrentPosition 
+  let hoover1CurrentPosition = 90
+  let hoover2CurrentPosition = 9
+  let hoover3CurrentPosition = 45
   const hoovers = []
 
   // * Ball
@@ -101,22 +101,6 @@ function init(){
     // })
   }
 
-  // * HOOVER FUNCTIONS
-  function addHoover(){
-    // console.log('square[hooverPosition]', squares[hooverPosition])
-    hooverStartingPositions.forEach((hoover) => {
-      squares[hoover].classList.add(hooverClass)
-      hoovers.push(hoover)
-      // console.log(hoovers)
-    })
-  }
-
-  // function moveHoover1(){
-  //   if (hooverStartingPositions === 9){
-  //     console.log('can move')
-  //   }
-  // }
-
   // * BALL FUNCTIONS
   function addBall(){
     ballPositions.forEach((ball) => {
@@ -124,7 +108,7 @@ function init(){
       balls.push(ball)
     })
   }
-
+  
   function removeBall(){
     // ballPositions.forEach((ball) => {
     if (squares[dogCurrentPosition].classList.contains(ballClass)){
@@ -136,19 +120,67 @@ function init(){
     // })
   }
 
+  // * HOOVER FUNCTIONS
+  function addHoover(){
+    // console.log('square[hooverPosition]', squares[hooverPosition])
+    hooverStartingPositions.forEach((hoover) => {
+      squares[hoover].classList.add(hooverClass)
+      hoovers.push(hoover)
+      // console.log(hoovers)
+    })
+  }
+
+  // let timer
+  //need to make hoover skip fence classes
+  function moveHoover(){
+    if (hoover1CurrentPosition === 90 && !(squares[hoover1CurrentPosition].classList.contains(fenceClass))){
+      const leftInterval = setInterval(() => {
+        squares[hoover1CurrentPosition].classList.remove(hooverClass)
+        hoover1CurrentPosition -= 1
+        squares[hoover1CurrentPosition].classList.add(hooverClass)
+      }, 1000)
+    }
+    if (hoover2CurrentPosition === 9){
+      const rightInterval = setInterval(() => {
+        squares[hoover2CurrentPosition].classList.remove(hooverClass)
+        hoover2CurrentPosition += 1
+        squares[hoover2CurrentPosition].classList.add(hooverClass)
+      }, 2000)
+    }
+    
+    // const firstInterval = setInterval(() => {
+    //   // console.log(hooverStartingPositions.indexOf(90))
+    //   hooverStartingPositions.indexOf(90)
+    //   hoover1CurrentPosition++
+    // }, 2000)
+    // firstInterval
+  }
+
+
   // function fail(){
     
   // }
 
   // * COLLISION
-  function detectCollision(){
-    // dogs collides the hoover 
+  // function detectCollision(){
+  //   // dogs collides the hoover 
     
-    // hoover collides with treat - if 
+  //   // hoover collides with treat - if 
 
-    // 
+  //   // 
+  // }
+
+  // * Overlay 
+  // to turn overlay on
+  function on(){
+    grid.classList.add('overlay')
+    grid.style.display = 'none'
   }
-  //hoover hits treat
+  // to turn overlay off
+  function off(){
+    grid.classList.remove('overlay')
+    grid.style.display = 'flex'
+  }
 
   // * KEY FUNCTIONS
   function handleKeyUp(event){
@@ -156,13 +188,13 @@ function init(){
     removeDog(dogCurrentPosition)
     
     //moving right
-    if (key === 39 && !(squares[dogCurrentPosition].classList.contains(fenceClass))){
+    if (key === 39 && !(squares[dogCurrentPosition + 1].classList.contains(fenceClass))){
       dogCurrentPosition++
-    } else if (key === 37 && !squares[dogCurrentPosition].classList.contains(fenceClass)){ //moving left
+    } else if (key === 37 && (!squares[dogCurrentPosition - 1].classList.contains(fenceClass))){ //moving left
       dogCurrentPosition--
-    } else if (key === 38 && dogCurrentPosition >= width && !squares[dogCurrentPosition].classList.contains(fenceClass)){ //moving up
+    } else if (key === 38 && (dogCurrentPosition >= width) && (!squares[dogCurrentPosition - width].classList.contains(fenceClass))){ //moving up
       dogCurrentPosition -= width
-    } else if (key === 40 && dogCurrentPosition + width <= width * width - 1 && !squares[dogCurrentPosition].classList.contains(fenceClass)){ //moving down
+    } else if (key === 40 && (dogCurrentPosition + width <= width * width - 1) && (!squares[dogCurrentPosition + width].classList.contains(fenceClass))){ //moving down
       dogCurrentPosition += width
     } else {
       console.log('INVALID KEY PRESSED')
@@ -176,11 +208,10 @@ function init(){
   const startGameSound = document.getElementById('start-game')
 
   function startGame(){
-    // moveHoover()
-    startGameSound.src = '../sounds/start-pacman.mp3'
-    startGameSound.play()
-    // moveHoover1()
-    
+    moveHoover()
+    off()
+    // startGameSound.src = '../sounds/start-pacman.mp3'
+    // startGameSound.play()
   }
 
   document.addEventListener('keyup', handleKeyUp)
@@ -191,5 +222,6 @@ function init(){
   addTreat()
   addHoover()
   addBall()
+  on()
 }
 window.addEventListener('DOMContentLoaded', init)
