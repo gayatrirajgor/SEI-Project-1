@@ -66,13 +66,11 @@ function init(){
     fencesPosition.forEach((fence) => {
       squares[fence].classList.add(fenceClass)
       fences.push(fence) //pushes individual fence into an array of fences
-      // console.log(fences)
     })
   }
 
   // * DOG FUNCTIONS
   function addDog(dogPosition){
-    // console.log('square[dogPosition]', squares[dogPosition])
     squares[dogPosition].classList.add(dogClass)
   }
 
@@ -86,19 +84,16 @@ function init(){
     treatPositions.forEach((treat) => {
       squares[treat].classList.add(treatClass)
       treats.push(treat) //pushes individual treat into an array of treats
-      // console.log(treats)
     })
   }
 
   function removeTreat(){
-    // treatPositions.forEach((treat) => {
     if (squares[dogCurrentPosition].classList.contains(treatClass)){
       squares[dogCurrentPosition].classList.remove(treatClass)
       scoreCount.innerText = Number(scoreCount.innerText) + 20
       // munchSound.src = '../sounds/munch.mp3'
       // munchSound.play()
     }
-    // })
   }
 
   // * BALL FUNCTIONS
@@ -110,14 +105,11 @@ function init(){
   }
   
   function removeBall(){
-    // ballPositions.forEach((ball) => {
     if (squares[dogCurrentPosition].classList.contains(ballClass)){
       squares[dogCurrentPosition].classList.remove(ballClass)
       scoreCount.innerText = Number(scoreCount.innerText) + 50
-      // squares[hoovers].classList.add(blinkClass)
-      // console.log(hoovers)
+      // squares[ho].classList.add(blinkClass)
     }
-    // })
   }
 
   // * HOOVER FUNCTIONS
@@ -133,29 +125,25 @@ function init(){
   // let timer
   //need to make hoover skip fence classes
   function moveHoover(){
-    if (hoover1CurrentPosition === 90 && !(squares[hoover1CurrentPosition].classList.contains(fenceClass))){
+    if (hoover1CurrentPosition === 90 && !(squares[hoover1CurrentPosition - 1].classList.contains(fenceClass))){
       const leftInterval = setInterval(() => {
         squares[hoover1CurrentPosition].classList.remove(hooverClass)
         hoover1CurrentPosition -= 1
         squares[hoover1CurrentPosition].classList.add(hooverClass)
       }, 1000)
     }
-    if (hoover2CurrentPosition === 9){
+    if (hoover2CurrentPosition === 9 && !(squares[hoover1CurrentPosition].classList.contains(fenceClass))){
       const rightInterval = setInterval(() => {
         squares[hoover2CurrentPosition].classList.remove(hooverClass)
         hoover2CurrentPosition += 1
         squares[hoover2CurrentPosition].classList.add(hooverClass)
       }, 2000)
     }
+    // if (hoover3CurrentPosition === 45 && !(squares[hoover1CurrentPosition].classList.contains(fenceClass))){
+    //   const 
+    // }
     
-    // const firstInterval = setInterval(() => {
-    //   // console.log(hooverStartingPositions.indexOf(90))
-    //   hooverStartingPositions.indexOf(90)
-    //   hoover1CurrentPosition++
-    // }, 2000)
-    // firstInterval
   }
-
 
   // function fail(){
     
