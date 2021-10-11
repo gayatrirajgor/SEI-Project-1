@@ -3,7 +3,7 @@
 }
 
 body {
-  height: 100vh;
+  height: 100%;
   margin: 0;
   background-image: url('../assets/bg-image.jpeg');
   background-repeat: no-repeat;
@@ -98,8 +98,10 @@ main {
   height: 55vh;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  /* align-items: space-between; */
+  margin: 10px;
 }
 
 .grid {

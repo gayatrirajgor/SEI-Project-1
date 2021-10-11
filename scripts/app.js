@@ -17,9 +17,9 @@ function init(){
 
   // * Treats
   const treatClass = 'treat'
-  const treatPositions = [1, 2, 4, 6, 7, 8, 10, 13, 14, 15, 16, 19, 23, 24, 25, 26, 28, 29, 30, 31, 36, 37, 38, 40, 41, 42, 45, 46, 47, 48, 51, 52, 53, 54, 55, 56, 57, 58, 59, 62, 64, 65, 70, 71, 72, 77, 78, 79, 81, 82, 83, 84, 85, 86, 88, 89, 91, 94, 96, 97, 98]
   const treats = []
   const munchSound = document.getElementById('munch')
+  const treatPositions = [1, 2, 4, 6, 7, 8, 10, 13, 14, 15, 16, 19, 23, 24, 25, 26, 28, 29, 30, 31, 36, 37, 38, 40, 41, 42, 45, 46, 47, 48, 51, 52, 53, 54, 55, 56, 57, 58, 59, 62, 64, 65, 70, 71, 72, 77, 78, 79, 81, 82, 83, 84, 85, 86, 88, 89, 91, 94, 96, 97, 98]
 
   // * Dog
   const dogClass = 'dog'
@@ -34,11 +34,12 @@ function init(){
   // * Hoover
   const hooverClass = 'hoover'
   const blinkClass = 'blink'
-  const hooverStartingPositions = [90, 9, 45] //36]
+  const hooverStartingPositions = [90, 9, 45] 
+  const hoovers = []
+  const hooverDirections = [+1, -1, +width, -width] // an array which holds different directions
   let hoover1CurrentPosition = 90
   let hoover2CurrentPosition = 9
   let hoover3CurrentPosition = 45
-  const hoovers = []
 
   // * Ball
   const ballClass = 'ball'
@@ -124,6 +125,16 @@ function init(){
 
   // let timer
   //need to make hoover skip fence classes
+
+  function hoover1Direction(){
+    let direction = hooverDirections[Math.floor(Math.random() * hooverDirections.length)] // selects random element
+    hoover1Interval = setInterval(() => {
+      if (squares[dogCurrentPosition].classList.contains(hooverClass)){
+        startGame()
+      } else direction = hooverDirections[Math.floor(Math.random() * hooverDirections.length)]
+    }, 2000)
+  }
+
   function moveHoover(){
     // if (hoover1CurrentPosition === 90 && !(squares[hoover1CurrentPosition - 1].classList.contains(fenceClass))){
     if (hoover1CurrentPosition === 90){
@@ -132,14 +143,18 @@ function init(){
         hoover1CurrentPosition -= 1
         squares[hoover1CurrentPosition].classList.add(hooverClass)
       }, 1000)
-    }
-    if (hoover2CurrentPosition === 9 && !(squares[hoover1CurrentPosition].classList.contains(fenceClass))){
-      const rightInterval = setInterval(() => {
-        squares[hoover2CurrentPosition].classList.remove(hooverClass)
-        hoover2CurrentPosition += 1
-        squares[hoover2CurrentPosition].classList.add(hooverClass)
+      setTimeout(() => {
+        clearInterval(leftInterval)
+        hoover1Direction()
       }, 2000)
     }
+    // if (hoover2CurrentPosition === 9 && !(squares[hoover1CurrentPosition].classList.contains(fenceClass))){
+    //   const rightInterval = setInterval(() => {
+    //     squares[hoover2CurrentPosition].classList.remove(hooverClass)
+    //     hoover2CurrentPosition += 1
+    //     squares[hoover2CurrentPosition].classList.add(hooverClass)
+    //   }, 2000)
+    // }
     // if (hoover3CurrentPosition === 45 && !(squares[hoover1CurrentPosition].classList.contains(fenceClass))){
     //   const 
     // }
