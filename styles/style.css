@@ -91,6 +91,10 @@ main {
 .startScreen p {
   font-size: 20px;
 }
+.startScreen ul {
+  flex-direction: column;
+  display: flex;
+}
 .intro-container {
   display: flex;
 }
