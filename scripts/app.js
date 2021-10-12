@@ -142,82 +142,29 @@ function init(){
 
   function hooverDirection(hoover){
     setInterval(() => {
-      squares[hoover.currentPosition].classList.remove(hooverClass)
+      squares[hoover.currentPosition].classList.remove(hoover.class)
       let direction = Math.floor(Math.random() * 4) // selects random element
     
-      if (direction === 0 && !(squares[hoover.currentPosition + 1].classList.contains(fenceClass))){
-        hoover.currentPosition = hoover.currentPosition + 1
-      } else if (direction === 1 && !(squares[hoover1CurrentPosition - 1].classList.contains(fenceClass))){
-        hoover.currentPosition = hoover.currentPosition - 1
-      } else if (direction === 2 && (hoover.currentPosition + width <= width - 1) && !(squares[hoover.currentPosition + width].classList.contains(fenceClass))){
-        hoover.currentPosition = hoover.currentPosition + width
-      } else if (direction === 3 && (hoover.currentPosition >= width) && !(squares[hoover.currentPosition - width].classList.contains(fenceClass))){
-        hoover.currentPosition = hoover.currentPosition - width
+      // hoover.previousPositions.push(hoover.currentPosition)
+
+      // and the hoover hasn't crossed previous position
+      if (direction === 0 && (squares[hoover.currentPosition + 1].classList.contains(fenceClass) === false) && (squares[hoover.previousPositions.length - 1].includes(hoover.currentPosition) === false)){
+        hoover.currentPosition++
+      } else if (direction === 1 && (squares[hoover1CurrentPosition - 1].classList.contains(fenceClass) === false)){
+        hoover.currentPosition--
+      } else if (direction === 2 && (hoover.currentPosition + width <= width - 1) && (squares[hoover.currentPosition + width].classList.contains(fenceClass) === false)){
+        hoover.currentPosition += width
+      } else if (direction === 3 && (hoover.currentPosition >= width) && (squares[hoover.currentPosition - width].classList.contains(fenceClass) === false)){
+        hoover.currentPosition -= width
       }
-      squares[hoover.currentPosition].classList.add(hooverClass)
+
+      hoover.previousPositions.push(hoover.currentPosition)
+      squares[hoover.currentPosition].classList.add(hoover.class)
       console.log('direction 1', direction)
+      // console.log('previous position', hoover.previousPositions)
+      // console.log((squares[hoover.currentPosition + 1].classList.contains(fenceClass)))
     }, 1000)
   }
-
-  // function hoover2Direction(){
-  //   setInterval(() => {
-  //     squares[hoover2CurrentPosition].classList.remove(hooverClass)
-  //     let direction = Math.floor(Math.random() * 3)
-
-  //     if (direction === 0 && !(squares[hoover2CurrentPosition + 1].classList.contains(fenceClass))){
-  //       hoover2CurrentPosition = hoover2CurrentPosition + 1
-  //     } else if (direction === 1 && !(squares[hoover2CurrentPosition - 1].classList.contains(fenceClass))) {
-  //       hoover2CurrentPosition = hoover2CurrentPosition - 1
-  //     } else if (direction === 2 && !(squares[hoover2CurrentPosition + width].classList.contains(fenceClass))) {
-  //       hoover2CurrentPosition = hoover2CurrentPosition + width
-  //     } else if (direction === 3 && !(squares[hoover2CurrentPosition - width].classList.contains(fenceClass))) {
-  //       hoover2CurrentPosition = hoover2CurrentPosition - width
-  //     }
-  //     squares[hoover2CurrentPosition].classList.add(hooverClass)
-  //     // console.log('direction 2', direction)
-  //   }, 2000)
-  // }
-
-  // function hoover3Direction(){
-  //   setInterval(() => {
-  //     squares[hoover3CurrentPosition].classList.remove(hooverClass)
-  //     let direction = Math.floor(Math.random() * 3)
-
-  //     if (direction === 0 && !(squares[hoover3CurrentPosition + 1].classList.contains(fenceClass))){
-  //       hoover3CurrentPosition = hoover3CurrentPosition + 1
-  //     } else if (direction === 1 && !(squares[hoover2CurrentPosition - 1].classList.contains(fenceClass))) {
-  //       hoover3CurrentPosition = hoover3CurrentPosition - 1
-  //     } else if (direction === 2 && !(squares[hoover2CurrentPosition + 1].classList.contains(fenceClass))) {
-  //       hoover3CurrentPosition = hoover3CurrentPosition + width
-  //     } else if (direction === 3 && !(squares[hoover2CurrentPosition + 1].classList.contains(fenceClass))) {
-  //       hoover3CurrentPosition = hoover3CurrentPosition - width
-  //     }
-  //     squares[hoover3CurrentPosition].classList.add(hooverClass)
-  //     // console.log('direction 3', direction)
-  //   }, 2500)
-  // }
-
-  // const leftInterval = setInterval(() => {
-  //   if ((hoover1CurrentPosition !== (squares[hoover1CurrentPosition].classList.contains(fenceClass)))){
-  //     squares[hoover1CurrentPosition].classList.remove(hooverClass)
-  //     hoover1CurrentPosition -= 1
-  //     squares[hoover1CurrentPosition].classList.add(hooverClass)
-  //   } else if ()
-  //   nextHooverPos.push(hoover1CurrentPosition)
-  // }, 1000)
-  // setTimeout(() => {
-  //   clearInterval(leftInterval)
-  // }, 2000)
-  // }
-  // if (hoover2CurrentPosition === !(squares[hoover1CurrentPosition].classList.contains(fenceClass))){
-  //   const rightInterval = setInterval(() => {
-  //     squares[hoover2CurrentPosition].classList.remove(hooverClass)
-  //     hoover2CurrentPosition += 1
-  //     squares[hoover2CurrentPosition].classList.add(hooverClass)
-  //   }, 2000)
-  // }
-    
-  // }
 
   // function fail(){
     
@@ -230,6 +177,7 @@ function init(){
       squares[dogCurrentPosition].classList.remove(dogClass)
       livesCount.innerText = Number(livesCount.innerText) - 1
       console.log(livesCount)
+      //display an overlay which says game over
     }
     // hoover collides with treat 
 
@@ -276,8 +224,8 @@ function init(){
     off()
     detectCollision()
     hooverDirection(hoover1)
-    // hoover2Direction()
-    // hoover3Direction()
+    // hooverDirection(hoover2)
+    // hooverDirection(hoover3)
     // startGameSound.src = './sounds/start-pacman.mp3'
     // startGameSound.play()
   }
