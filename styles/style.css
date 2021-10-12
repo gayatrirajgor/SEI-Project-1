@@ -67,6 +67,36 @@ main {
   display: none;
 }
 
+.startScreen {
+  border: 1px dashed white;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  color: white;
+  width: 50vw;
+  text-align: center;
+}
+.startScreen h2 {
+  font-size: 32px;
+}
+.startScreen img {
+  width: 250px;
+  height: 350px;
+  margin: 10px;
+  margin-bottom: 20px;
+}
+.startScreen p {
+  font-size: 20px;
+}
+.intro-container {
+  display: flex;
+}
+#hates-text {
+  color: red;
+}
 /* RULES */
 .rules {
   align-items: center;

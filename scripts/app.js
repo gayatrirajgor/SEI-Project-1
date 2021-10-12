@@ -1,6 +1,7 @@
 function init(){
   const grid = document.querySelector('.grid')
-  // console.log('grid:', grid)
+  const rules = document.querySelector('.rules')
+  const startScreen = document.querySelector('.startScreen')
   const button = document.querySelector('button')
   const scoreCount = document.getElementById('score')
   // console.log(scoreCount)
@@ -187,12 +188,18 @@ function init(){
   // to turn overlay on
   function on(){
     grid.classList.add('overlay')
+    rules.classList.add('overlay')
     grid.style.display = 'none'
+    rules.style.display = 'none'
   }
   // to turn overlay off
   function off(){
     grid.classList.remove('overlay')
+    rules.classList.remove('overlay')
+    startScreen.classList.add('overlay')
+    startScreen.style.display = 'none'
     grid.style.display = 'flex'
+    rules.style.display = 'inline-block'
   }
 
   // * KEY FUNCTIONS
