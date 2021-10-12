@@ -130,13 +130,13 @@ function init(){
         hoover1CurrentPosition = hoover1CurrentPosition + 1
       } else if (direction === 1 && !(squares[hoover1CurrentPosition - 1].classList.contains(fenceClass))){
         hoover1CurrentPosition = hoover1CurrentPosition - 1
-      } else if (direction === 2 /* && !(squares[hoover1CurrentPosition + width].classList.contains(fenceClass)) */){
+      } else if (direction === 2 && (hoover1CurrentPosition + width <= width - 1) && !(squares[hoover1CurrentPosition + width].classList.contains(fenceClass))){
         hoover1CurrentPosition = hoover1CurrentPosition + width
-      } else if (direction === 3 /* && !(squares[hoover1CurrentPosition - width].classList.contains(fenceClass)) */){
+      } else if (direction === 3 && (hoover1CurrentPosition >= width) && !(squares[hoover1CurrentPosition - width].classList.contains(fenceClass))){
         hoover1CurrentPosition = hoover1CurrentPosition - width
       }
       squares[hoover1CurrentPosition].classList.add(hooverClass)
-      console.log(direction)
+      console.log('direction 1', direction)
     }, 1000)
   }
 
@@ -145,24 +145,38 @@ function init(){
       squares[hoover2CurrentPosition].classList.remove(hooverClass)
       let direction = Math.floor(Math.random() * 3)
 
-      if (direction === 0){
+      if (direction === 0 && !(squares[hoover2CurrentPosition + 1].classList.contains(fenceClass))){
         hoover2CurrentPosition = hoover2CurrentPosition + 1
+      } else if (direction === 1 && !(squares[hoover2CurrentPosition + 1].classList.contains(fenceClass))) {
+        hoover2CurrentPosition = hoover2CurrentPosition - 1
+      } else if (direction === 2 && !(squares[hoover2CurrentPosition + 1].classList.contains(fenceClass))) {
+        hoover2CurrentPosition = hoover2CurrentPosition + width
+      } else if (direction === 3 && !(squares[hoover2CurrentPosition + 1].classList.contains(fenceClass))) {
+        hoover2CurrentPosition = hoover2CurrentPosition - width
       }
       squares[hoover2CurrentPosition].classList.add(hooverClass)
+      console.log('direction 2', direction)
     }, 2000)
   }
 
-  // function moveHoover(){
-  //   // if (hoover1CurrentPosition === 90 && !(squares[hoover1CurrentPosition - 1].classList.contains(fenceClass))){
-  //   // if (hoover1CurrentPosition !== (squares[hoover1CurrentPosition].classList.contains(fenceClass))){
-  //   setInterval(() => {
-  //     if (hoover1.currentPosition !== (squares[hoover1.currentPosition].classList.contains(fenceClass))){
-  //       squares[hoover1.currentPosition].classList.remove(hooverClass)
-  //       hoover1.currentPosition -= 1
-  //       squares[hoover1.currentPosition].classList.add(hoover1.class)
-  //     }
-  //   }, 1000)
+  function hoover3Direction(){
+    setInterval(() => {
+      squares[hoover3CurrentPosition].classList.remove(hooverClass)
+      let direction = Math.floor(Math.random() * 3)
 
+      if (direction === 0 && !(squares[hoover3CurrentPosition + 1].classList.contains(fenceClass))){
+        hoover3CurrentPosition = hoover3CurrentPosition + 1
+      } else if (direction === 1 && !(squares[hoover2CurrentPosition + 1].classList.contains(fenceClass))) {
+        hoover3CurrentPosition = hoover3CurrentPosition - 1
+      } else if (direction === 2 && !(squares[hoover2CurrentPosition + 1].classList.contains(fenceClass))) {
+        hoover3CurrentPosition = hoover3CurrentPosition + width
+      } else if (direction === 3 && !(squares[hoover2CurrentPosition + 1].classList.contains(fenceClass))) {
+        hoover3CurrentPosition = hoover3CurrentPosition - width
+      }
+      squares[hoover3CurrentPosition].classList.add(hooverClass)
+      console.log('direction 3', direction)
+    }, 2500)
+  }
 
   // const leftInterval = setInterval(() => {
   //   if ((hoover1CurrentPosition !== (squares[hoover1CurrentPosition].classList.contains(fenceClass)))){
@@ -182,9 +196,6 @@ function init(){
   //     hoover2CurrentPosition += 1
   //     squares[hoover2CurrentPosition].classList.add(hooverClass)
   //   }, 2000)
-  // }
-  // if (hoover3CurrentPosition === 45 && !(squares[hoover1CurrentPosition].classList.contains(fenceClass))){
-  //   const 
   // }
     
   // }
@@ -247,6 +258,7 @@ function init(){
     detectCollision()
     hoover1Direction()
     hoover2Direction()
+    hoover3Direction()
     // startGameSound.src = './sounds/start-pacman.mp3'
     // startGameSound.play()
   }
