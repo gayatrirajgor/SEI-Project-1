@@ -88,7 +88,7 @@ main {
   margin: 10px;
   margin-bottom: 20px;
 }
-.startScreen p {
+.text-container {
   font-size: 20px;
 }
 .startScreen ul {
