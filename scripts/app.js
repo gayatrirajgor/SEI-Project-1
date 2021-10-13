@@ -130,7 +130,6 @@ function init(){
       squares[dogCurrentPosition].classList.remove(ballClass)
       score += 50
       scoreCount.innerText = score
-      // squares[ho].classList.add(blinkClass)
       ballFound(hoover1)
       ballFound(hoover2)
       ballFound(hoover3)
@@ -188,11 +187,12 @@ function init(){
 
   //this function will reset the location of the hoovers 
   function ballFound(hoover) {
-    // console.log('Ball has been found', hoover)
     // setTimeout(() => {
     squares[hoover.currentPosition].classList.remove(hoover.class)
     hoover.currentPosition = hoover.startingPosition
-    squares[hoover.startingPosition].classList.add(hoover.class)
+    squares[hoover.currentPosition].classList.add(hoover.class)
+    squares[hoover.currentPosition].classList.add(blinkClass)
+    //make them blink for a certain amount of time
     // }, 10000)
   }
 
