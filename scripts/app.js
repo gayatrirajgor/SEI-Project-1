@@ -131,11 +131,9 @@ function init(){
       score += 50
       scoreCount.innerText = score
       // squares[ho].classList.add(blinkClass)
-    
-      hoover1.currentPosition === hoover1.startingPosition
-      hoover2.currentPosition === hoover2.startingPosition
-      hoover3.currentPosition === hoover3.startingPosition
-      // restart the position of hoovers
+      ballFound(hoover1)
+      ballFound(hoover2)
+      ballFound(hoover3)
     }
   }
 
@@ -150,24 +148,27 @@ function init(){
 
   function hooverDirection(hoover){
     setInterval(() => {
-      squares[hoover.currentPosition].classList.remove(hoover.class)
+      squares[hoover.currentPosition].classList.remove(hooverClass)
       let direction = Math.floor(Math.random() * 4) // selects random element
     
       // hoover.previousPositions.push(hoover.currentPosition)
 
-      if (direction === 0 && (squares[hoover.currentPosition + 1].classList.contains(fenceClass) === false) /* && (squares[hoover.previousPositions.length - 1].contains(hoover.currentPosition) === false) */){
+      // add the border to the conditions
+
+      if (direction === 0 && !(squares[hoover.currentPosition + 1].classList.contains(fenceClass)) && (squares[hoover.previousPositions.length - 1] !== squares[hoover.currentPosition])){
         hoover.currentPosition++
-      } else if (direction === 1 && (squares[hoover1CurrentPosition - 1].classList.contains(fenceClass) === false) /* && (squares[hoover.previousPositions.length - 1].contains(hoover.currentPosition) === false) */){
+      } else if (direction === 1 && !(squares[hoover1CurrentPosition - 1].classList.contains(fenceClass)) && (squares[hoover.previousPositions.length - 1] !== squares[hoover.currentPosition])){
         hoover.currentPosition--
-      } else if (direction === 2 && (hoover.currentPosition + width <= width - 1) && (squares[hoover.currentPosition + width].classList.contains(fenceClass) === false) /* && (squares[hoover.previousPositions.length - 1].contains(hoover.currentPosition) === false) */){
+      } else if (direction === 2 && (hoover.currentPosition + width <= width - 1) && !(squares[hoover.currentPosition + width].classList.contains(fenceClass)) && (squares[hoover.previousPositions.length - 1] !== squares[hoover.currentPosition])){
         hoover.currentPosition += width
-      } else if (direction === 3 && (hoover.currentPosition >= width) && (squares[hoover.currentPosition - width].classList.contains(fenceClass) === false) /* && (squares[hoover.previousPositions.length - 1].contains(hoover.currentPosition) === false) */){
+      } else if (direction === 3 && (hoover.currentPosition >= width) && !(squares[hoover.currentPosition - width].classList.contains(fenceClass)) && (squares[hoover.previousPositions.length - 1] !== squares[hoover.currentPosition])){
         hoover.currentPosition -= width
       }
 
       hoover.previousPositions.push(hoover.currentPosition)
-      squares[hoover.currentPosition].classList.add(hoover.class)
+      squares[hoover.currentPosition].classList.add(hooverClass)
       console.log('direction 1', direction)
+      console.log('Current position:', hoover1.currentPosition)
       // console.log('previous position', hoover.previousPositions)
       // console.log((squares[hoover.currentPosition + 1].classList.contains(fenceClass)))
     }, 2000)
@@ -177,7 +178,7 @@ function init(){
   // if collision is detected then dog position is reset to starting position and lives - 1
   function detectCollision(){
     squares[dogCurrentPosition].classList.remove(dogClass)
-    dogCurrentPosition === dogStartingPosition
+    dogCurrentPosition = 0
     squares[dogCurrentPosition].classList.add(dogClass)
     lives -= 1
     livesCount.innerText = lives
@@ -185,12 +186,21 @@ function init(){
     checkForLives()
   }
 
+  //this function will reset the location of the hoovers 
+  function ballFound(hoover) {
+    // console.log('Ball has been found', hoover)
+    // setTimeout(() => {
+    squares[hoover.currentPosition].classList.remove(hoover.class)
+    hoover.currentPosition = hoover.startingPosition
+    squares[hoover.startingPosition].classList.add(hoover.class)
+    // }, 10000)
+  }
+
   function checkForLives(){
     if (lives === 0) {
       alert(`Oh no! The hoover got to Jojo! Well done for trying! Your final score: ${score}`)
-    } else if (lives === 2 || lives === 1){
       restartGame()
-    }
+    } 
   }
 
   function checkWin(){
@@ -255,8 +265,8 @@ function init(){
   function startGame(){
     off()
     hooverDirection(hoover1)
-    // hooverDirection(hoover2)
-    // hooverDirection(hoover3)
+    hooverDirection(hoover2)
+    hooverDirection(hoover3)
     // startGameSound.src = './sounds/start-pacman.mp3'
     // startGameSound.play()
   }
