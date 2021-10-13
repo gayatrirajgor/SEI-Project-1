@@ -131,7 +131,10 @@ function init(){
       score += 50
       scoreCount.innerText = score
       // squares[ho].classList.add(blinkClass)
-
+    
+      hoover1.currentPosition === hoover1.startingPosition
+      hoover2.currentPosition === hoover2.startingPosition
+      hoover3.currentPosition === hoover3.startingPosition
       // restart the position of hoovers
     }
   }
@@ -171,17 +174,20 @@ function init(){
   }
 
   // * COLLISION
+  // if collision is detected then dog position is reset to starting position and lives - 1
   function detectCollision(){
     squares[dogCurrentPosition].classList.remove(dogClass)
+    dogCurrentPosition === dogStartingPosition
+    squares[dogCurrentPosition].classList.add(dogClass)
     lives -= 1
     livesCount.innerText = lives
     console.log('LIVES:', lives)
-    alert(`Oh no! The hoover got to Jojo! Well done for trying! Your final score: ${score}`)
+    checkForLives()
   }
 
-  function checkLives(){
+  function checkForLives(){
     if (lives === 0) {
-      
+      alert(`Oh no! The hoover got to Jojo! Well done for trying! Your final score: ${score}`)
     } else if (lives === 2 || lives === 1){
       restartGame()
     }
@@ -249,8 +255,6 @@ function init(){
   function startGame(){
     off()
     hooverDirection(hoover1)
-    checkLives()
-
     // hooverDirection(hoover2)
     // hooverDirection(hoover3)
     // startGameSound.src = './sounds/start-pacman.mp3'
