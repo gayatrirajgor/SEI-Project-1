@@ -4,9 +4,8 @@ function init(){
   const startScreen = document.querySelector('.startScreen')
   const button = document.querySelector('button')
   const scoreCount = document.getElementById('score')
-  // console.log(scoreCount)
   const livesCount = document.getElementById('lives')
-  // console.log(livesCount)
+  let lives = 3
 
   // * Grid
   const width = 10
@@ -167,20 +166,14 @@ function init(){
     }, 2000)
   }
 
-  // function fail(){
-    
-  // }
-
   // * COLLISION
   function detectCollision(){
-    // dogs collides the hoover 
-    if (squares[dogCurrentPosition].classList.contains(hooverClass)){
-      squares[dogCurrentPosition].classList.remove(dogClass)
-      livesCount.innerText = Number(livesCount.innerText) - 1
-      console.log(livesCount)
-      //display an overlay which says game over
-    }
-    // hoover collides with treat 
+    // dogs collides the hoover -> game ends
+    squares[dogCurrentPosition].classList.remove(dogClass)
+    lives -= 1
+    livesCount.innerText = lives
+    console.log('LIVES:', lives)
+    endGame()
 
   }
 
@@ -202,9 +195,27 @@ function init(){
     rules.style.display = 'inline-block'
   }
 
+  function checkLives(){
+    // if lives = 0, then call endGame
+    if (lives === 2 || lives === 1){
+      restartGame()
+    }
+  }
+
+  function endGame(){
+    // here game needs to restart
+
+    // display overlay
+  }
+
+  function restartGame(){
+    window.location.reload()
+  }
+
   // * KEY FUNCTIONS
   function handleKeyUp(event){
     const key = event.keyCode
+    
     removeDog(dogCurrentPosition)
     
     //moving right
@@ -223,14 +234,17 @@ function init(){
     addDog(dogCurrentPosition)
     removeTreat(treatPositions)
     removeBall(ballPositions)
+    if (squares[dogCurrentPosition].classList.contains(hooverClass)){
+      detectCollision()
+    }
   }
 
   const startGameSound = document.getElementById('start-game')
 
   function startGame(){
     off()
-    detectCollision()
     hooverDirection(hoover1)
+    checkLives()
     // hooverDirection(hoover2)
     // hooverDirection(hoover3)
     // startGameSound.src = './sounds/start-pacman.mp3'
