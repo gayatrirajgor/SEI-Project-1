@@ -5,7 +5,10 @@ function init(){
   const button = document.querySelector('button')
   const scoreCount = document.getElementById('score')
   const livesCount = document.getElementById('lives')
+  const munchSound = document.getElementById('munch')
+  const winSound = document.getElementById('win')
   let lives = 3
+  let score = 0
 
   // * Grid
   const width = 10
@@ -18,7 +21,6 @@ function init(){
   // * Treats
   const treatClass = 'treat'
   const treats = []
-  const munchSound = document.getElementById('munch')
   const treatPositions = [1, 2, 4, 6, 7, 8, 10, 13, 14, 15, 16, 19, 23, 24, 25, 26, 28, 29, 30, 31, 36, 37, 38, 40, 41, 42, 45, 46, 47, 48, 51, 52, 53, 54, 55, 56, 57, 58, 59, 62, 64, 65, 70, 71, 72, 77, 78, 79, 81, 82, 83, 84, 85, 86, 88, 89, 91, 94, 96, 97, 98]
 
   // * Dog
@@ -71,7 +73,6 @@ function init(){
     for (let i = 0; i < squareCount; i++){
       const square = document.createElement('div')
       square.classList.add('square')
-      // console.log('SQUARE:', square)
       square.innerText = i
       grid.appendChild(square)
       squares.push(square)
@@ -109,7 +110,8 @@ function init(){
   function removeTreat(){
     if (squares[dogCurrentPosition].classList.contains(treatClass)){
       squares[dogCurrentPosition].classList.remove(treatClass)
-      scoreCount.innerText = Number(scoreCount.innerText) + 20
+      score += 20
+      scoreCount.innerText = score
       munchSound.src = './sounds/munch.mp3'
       munchSound.play()
     }
@@ -126,8 +128,11 @@ function init(){
   function removeBall(){
     if (squares[dogCurrentPosition].classList.contains(ballClass)){
       squares[dogCurrentPosition].classList.remove(ballClass)
-      scoreCount.innerText = Number(scoreCount.innerText) + 50
+      score += 50
+      scoreCount.innerText = score
       // squares[ho].classList.add(blinkClass)
+
+      // restart the position of hoovers
     }
   }
 
@@ -147,7 +152,6 @@ function init(){
     
       // hoover.previousPositions.push(hoover.currentPosition)
 
-      // and the hoover hasn't crossed previous position
       if (direction === 0 && (squares[hoover.currentPosition + 1].classList.contains(fenceClass) === false) /* && (squares[hoover.previousPositions.length - 1].contains(hoover.currentPosition) === false) */){
         hoover.currentPosition++
       } else if (direction === 1 && (squares[hoover1CurrentPosition - 1].classList.contains(fenceClass) === false) /* && (squares[hoover.previousPositions.length - 1].contains(hoover.currentPosition) === false) */){
@@ -168,48 +172,47 @@ function init(){
 
   // * COLLISION
   function detectCollision(){
-    // dogs collides the hoover -> game ends
     squares[dogCurrentPosition].classList.remove(dogClass)
     lives -= 1
     livesCount.innerText = lives
     console.log('LIVES:', lives)
-    endGame()
+    alert(`Oh no! The hoover got to Jojo! Well done for trying! Your final score: ${score}`)
+  }
 
+  function checkLives(){
+    if (lives === 0) {
+      
+    } else if (lives === 2 || lives === 1){
+      restartGame()
+    }
+  }
+
+  function checkWin(){
+    if (score > 1220){
+      winSound.src = './sounds/who_let_dogs_out.mp3'
+      winSound.play()
+    }
+  }
+
+  function restartGame(){
+    window.location.reload()
   }
 
   // * Overlay 
-  // to turn overlay on
-  function on(){
+  function on(){ // to turn overlay on
     grid.classList.add('overlay')
     rules.classList.add('overlay')
     grid.style.display = 'none'
     rules.style.display = 'none'
   }
-  // to turn overlay off
-  function off(){
+  
+  function off(){ // to turn overlay off
     grid.classList.remove('overlay')
     rules.classList.remove('overlay')
     startScreen.classList.add('overlay')
     startScreen.style.display = 'none'
     grid.style.display = 'flex'
     rules.style.display = 'inline-block'
-  }
-
-  function checkLives(){
-    // if lives = 0, then call endGame
-    if (lives === 2 || lives === 1){
-      restartGame()
-    }
-  }
-
-  function endGame(){
-    // here game needs to restart
-
-    // display overlay
-  }
-
-  function restartGame(){
-    window.location.reload()
   }
 
   // * KEY FUNCTIONS
@@ -234,7 +237,9 @@ function init(){
     addDog(dogCurrentPosition)
     removeTreat(treatPositions)
     removeBall(ballPositions)
-    if (squares[dogCurrentPosition].classList.contains(hooverClass)){
+    checkWin()
+
+    if ((squares[dogCurrentPosition] === squares[hoover1.currentPosition]) || (squares[dogCurrentPosition] === squares[hoover2.currentPosition]) || (squares[dogCurrentPosition] === squares[hoover3.currentPosition])){
       detectCollision()
     }
   }
@@ -245,6 +250,7 @@ function init(){
     off()
     hooverDirection(hoover1)
     checkLives()
+
     // hooverDirection(hoover2)
     // hooverDirection(hoover3)
     // startGameSound.src = './sounds/start-pacman.mp3'
