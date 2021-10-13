@@ -149,13 +149,13 @@ function init(){
       // hoover.previousPositions.push(hoover.currentPosition)
 
       // and the hoover hasn't crossed previous position
-      if (direction === 0 && (squares[hoover.currentPosition + 1].classList.contains(fenceClass) === false) && (squares[hoover.previousPositions.length - 1].includes(hoover.currentPosition) === false)){
+      if (direction === 0 && (squares[hoover.currentPosition + 1].classList.contains(fenceClass) === false) /* && (squares[hoover.previousPositions.length - 1].contains(hoover.currentPosition) === false) */){
         hoover.currentPosition++
-      } else if (direction === 1 && (squares[hoover1CurrentPosition - 1].classList.contains(fenceClass) === false)){
+      } else if (direction === 1 && (squares[hoover1CurrentPosition - 1].classList.contains(fenceClass) === false) /* && (squares[hoover.previousPositions.length - 1].contains(hoover.currentPosition) === false) */){
         hoover.currentPosition--
-      } else if (direction === 2 && (hoover.currentPosition + width <= width - 1) && (squares[hoover.currentPosition + width].classList.contains(fenceClass) === false)){
+      } else if (direction === 2 && (hoover.currentPosition + width <= width - 1) && (squares[hoover.currentPosition + width].classList.contains(fenceClass) === false) /* && (squares[hoover.previousPositions.length - 1].contains(hoover.currentPosition) === false) */){
         hoover.currentPosition += width
-      } else if (direction === 3 && (hoover.currentPosition >= width) && (squares[hoover.currentPosition - width].classList.contains(fenceClass) === false)){
+      } else if (direction === 3 && (hoover.currentPosition >= width) && (squares[hoover.currentPosition - width].classList.contains(fenceClass) === false) /* && (squares[hoover.previousPositions.length - 1].contains(hoover.currentPosition) === false) */){
         hoover.currentPosition -= width
       }
 
@@ -164,7 +164,7 @@ function init(){
       console.log('direction 1', direction)
       // console.log('previous position', hoover.previousPositions)
       // console.log((squares[hoover.currentPosition + 1].classList.contains(fenceClass)))
-    }, 1000)
+    }, 2000)
   }
 
   // function fail(){
