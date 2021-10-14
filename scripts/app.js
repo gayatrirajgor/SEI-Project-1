@@ -148,6 +148,8 @@ function init(){
       // console.log(hoovers)
     })
   }
+  // let hooverInterval
+  // hooverInterval = setInterval(hooverDirection, 2000)
 
   function hooverDirection(hoover){
     setInterval(() => {
@@ -169,8 +171,8 @@ function init(){
       squares[hoover.currentPosition].classList.add(hooverClass)
       console.log('direction 1', direction)
       console.log('Current position:', hoover1.currentPosition)
-      // console.log('previous position', hoover.previousPositions)
-      // console.log((squares[hoover.currentPosition + 1].classList.contains(fenceClass)))
+    // console.log('previous position', hoover.previousPositions)
+    // console.log((squares[hoover.currentPosition + 1].classList.contains(fenceClass)))
     }, 2000)
   }
 
@@ -194,7 +196,13 @@ function init(){
     hoover.currentPosition = hoover.startingPosition
     squares[hoover.currentPosition].classList.add(hoover.class)
     squares[hoover.currentPosition].classList.add(blinkClass)
-    //make them blink for a certain amount of time
+    // clearInterval(hooverInterval)
+    setTimeout(() => {
+      hooverDirection(hoover1)
+      hooverDirection(hoover2)
+      hooverDirection(hoover3)
+      squares[hoover.currentPosition].classList.remove(blinkClass)
+    }, 10000)
     // }, 10000)
   }
 
@@ -206,11 +214,15 @@ function init(){
   }
 
   function checkWin(){
-    if (/* score > 1220 && */ treatCount === 0){
+    if (treatCount === 0){
       winSound.src = './sounds/who_let_dogs_out.mp3'
       winSound.play()
+      squares[hoover1.currentPosition].classList.remove(hooverClass)
+      squares[hoover2.currentPosition].classList.remove(hooverClass)
+      squares[hoover3.currentPosition].classList.remove(hooverClass)
+      //remove hoover class 
     }
-    //put an alert to show score
+    //put an alert/overlay to show score
   }
 
   function restartGame(){
@@ -264,10 +276,12 @@ function init(){
   }
 
   function startGame(){
+    // hooverInterval = setInterval(hooverDirection(hoover1), 2000)
     off()
     hooverDirection(hoover1)
     hooverDirection(hoover2)
     hooverDirection(hoover3)
+
     // startGameSound.src = './sounds/start-pacman.mp3'
     // startGameSound.play()
   }
