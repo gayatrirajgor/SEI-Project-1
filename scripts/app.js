@@ -7,6 +7,7 @@ function init(){
   const livesCount = document.getElementById('lives')
   const munchSound = document.getElementById('munch')
   const winSound = document.getElementById('win')
+  const startGameSound = document.getElementById('start-game')
   let lives = 3
   let score = 0
 
@@ -22,6 +23,7 @@ function init(){
   const treatClass = 'treat'
   const treats = []
   const treatPositions = [1, 2, 4, 6, 7, 8, 10, 13, 14, 15, 16, 19, 23, 24, 25, 26, 28, 29, 30, 31, 36, 37, 38, 40, 41, 42, 45, 46, 47, 48, 51, 52, 53, 54, 55, 56, 57, 58, 59, 62, 64, 65, 70, 71, 72, 77, 78, 79, 81, 82, 83, 84, 85, 86, 88, 89, 91, 94, 96, 97, 98]
+  let treatCount = 61
 
   // * Dog
   const dogClass = 'dog'
@@ -110,6 +112,8 @@ function init(){
   function removeTreat(){
     if (squares[dogCurrentPosition].classList.contains(treatClass)){
       squares[dogCurrentPosition].classList.remove(treatClass)
+      treatCount -= 1
+      console.log('TREAT COUNT:', treatCount)
       score += 20
       scoreCount.innerText = score
       munchSound.src = './sounds/munch.mp3'
@@ -151,9 +155,6 @@ function init(){
       let direction = Math.floor(Math.random() * 4) // selects random element
     
       // hoover.previousPositions.push(hoover.currentPosition)
-
-      // add the border to the conditions
-
       if (direction === 0 && !(squares[hoover.currentPosition + 1].classList.contains(fenceClass)) && (squares[hoover.previousPositions.length - 1] !== squares[hoover.currentPosition])){
         hoover.currentPosition++
       } else if (direction === 1 && !(squares[hoover1CurrentPosition - 1].classList.contains(fenceClass)) && (squares[hoover.previousPositions.length - 1] !== squares[hoover.currentPosition])){
@@ -186,6 +187,7 @@ function init(){
   }
 
   //this function will reset the location of the hoovers 
+  // if ball is found, ghosts cannot get dog for certain amount of time
   function ballFound(hoover) {
     // setTimeout(() => {
     squares[hoover.currentPosition].classList.remove(hoover.class)
@@ -204,10 +206,11 @@ function init(){
   }
 
   function checkWin(){
-    if (score > 1220){
+    if (/* score > 1220 && */ treatCount === 0){
       winSound.src = './sounds/who_let_dogs_out.mp3'
       winSound.play()
     }
+    //put an alert to show score
   }
 
   function restartGame(){
@@ -259,8 +262,6 @@ function init(){
       detectCollision()
     }
   }
-
-  const startGameSound = document.getElementById('start-game')
 
   function startGame(){
     off()
