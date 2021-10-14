@@ -2,6 +2,7 @@ function init(){
   const grid = document.querySelector('.grid')
   const rules = document.querySelector('.rules')
   const startScreen = document.querySelector('.startScreen')
+  const winScreen = document.querySelector('.winGame')
   const button = document.querySelector('button')
   const scoreCount = document.getElementById('score')
   const livesCount = document.getElementById('lives')
@@ -145,35 +146,39 @@ function init(){
     hooverStartingPositions.forEach((hoover) => {
       squares[hoover].classList.add(hooverClass)
       hoovers.push(hoover)
-      // console.log(hoovers)
     })
   }
   // let hooverInterval
   // hooverInterval = setInterval(hooverDirection, 2000)
 
   function hooverDirection(hoover){
-    setInterval(() => {
+    hoover.moveInterval = setInterval(() => {
       squares[hoover.currentPosition].classList.remove(hooverClass)
       let direction = Math.floor(Math.random() * 4) // selects random element
     
       // hoover.previousPositions.push(hoover.currentPosition)
-      if (direction === 0 && !(squares[hoover.currentPosition + 1].classList.contains(fenceClass)) && (squares[hoover.previousPositions.length - 1] !== squares[hoover.currentPosition])){
+      if (direction === 0 && !squares[hoover.currentPosition + 1].classList.contains('fence') && !squares[hoover.currentPosition + 1].classList.contains(ballClass) && squares[hoover.previousPositions[hoover.previousPositions.length - 2]] !== squares[hoover.currentPosition + 1]){
         hoover.currentPosition++
-      } else if (direction === 1 && !(squares[hoover1CurrentPosition - 1].classList.contains(fenceClass)) && (squares[hoover.previousPositions.length - 1] !== squares[hoover.currentPosition])){
+      } else if (direction === 1 && !squares[hoover1CurrentPosition - 1].classList.contains('fence') && squares[hoover.previousPositions[hoover.previousPositions.length - 2]] !== squares[hoover.currentPosition - 1]){
         hoover.currentPosition--
-      } else if (direction === 2 && (hoover.currentPosition + width <= width - 1) && !(squares[hoover.currentPosition + width].classList.contains(fenceClass)) && (squares[hoover.previousPositions.length - 1] !== squares[hoover.currentPosition])){
+      } else if (direction === 2 && hoover.currentPosition + width <= width * width - 1 && !squares[hoover.currentPosition + width].classList.contains('fence') && squares[hoover.previousPositions[hoover.previousPositions.length - 2]] !== squares[hoover.currentPosition]){
         hoover.currentPosition += width
-      } else if (direction === 3 && (hoover.currentPosition >= width) && !(squares[hoover.currentPosition - width].classList.contains(fenceClass)) && (squares[hoover.previousPositions.length - 1] !== squares[hoover.currentPosition])){
+      } else if (direction === 3 && hoover.currentPosition >= width && !squares[hoover.currentPosition - width].classList.contains('fence') && squares[hoover.previousPositions[hoover.previousPositions.length - 2]] !== squares[hoover.currentPosition]){
         hoover.currentPosition -= width
       }
 
       hoover.previousPositions.push(hoover.currentPosition)
       squares[hoover.currentPosition].classList.add(hooverClass)
       console.log('direction 1', direction)
-      console.log('Current position:', hoover1.currentPosition)
-    // console.log('previous position', hoover.previousPositions)
-    // console.log((squares[hoover.currentPosition + 1].classList.contains(fenceClass)))
-    }, 2000)
+      console.log('HOOVER 1 POS =>', hoover1.currentPosition)
+      console.log('HOOVER 2 POS =>', hoover2.currentPosition)
+      console.log('HOOVER 3 POS =>', hoover3.currentPosition)
+      console.log((squares[hoover.currentPosition + 1].classList.contains(fenceClass)))
+
+      if ((squares[dogCurrentPosition] === squares[hoover1.currentPosition]) || (squares[dogCurrentPosition] === squares[hoover2.currentPosition]) || (squares[dogCurrentPosition] === squares[hoover3.currentPosition])){
+        detectCollision()
+      }
+    }, 500)
   }
 
   // * COLLISION
@@ -191,19 +196,15 @@ function init(){
   //this function will reset the location of the hoovers 
   // if ball is found, ghosts cannot get dog for certain amount of time
   function ballFound(hoover) {
-    // setTimeout(() => {
     squares[hoover.currentPosition].classList.remove(hoover.class)
     hoover.currentPosition = hoover.startingPosition
     squares[hoover.currentPosition].classList.add(hoover.class)
     squares[hoover.currentPosition].classList.add(blinkClass)
-    // clearInterval(hooverInterval)
+    clearInterval(hoover.moveInterval)
     setTimeout(() => {
-      hooverDirection(hoover1)
-      hooverDirection(hoover2)
-      hooverDirection(hoover3)
+      hooverDirection(hoover)
       squares[hoover.currentPosition].classList.remove(blinkClass)
     }, 10000)
-    // }, 10000)
   }
 
   function checkForLives(){
@@ -220,9 +221,10 @@ function init(){
       squares[hoover1.currentPosition].classList.remove(hooverClass)
       squares[hoover2.currentPosition].classList.remove(hooverClass)
       squares[hoover3.currentPosition].classList.remove(hooverClass)
-      //remove hoover class 
+      // winScreen.classList.remove('overlay')
+      // winScreen.style.display = 'flex'
+      alert(`YOU WON!!!! Your final score is: ${score}`)
     }
-    //put an alert/overlay to show score
   }
 
   function restartGame(){
@@ -233,8 +235,10 @@ function init(){
   function on(){ // to turn overlay on
     grid.classList.add('overlay')
     rules.classList.add('overlay')
+    winScreen.classList.add('overlay')
     grid.style.display = 'none'
     rules.style.display = 'none'
+    winScreen.style.display = 'none'
   }
   
   function off(){ // to turn overlay off

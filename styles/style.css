@@ -10,6 +10,7 @@ body {
   background-size: cover;
   background-position: center;
   font-family: 'Patrick Hand', cursive;
+  opacity: 3;
 }
 
 /* HEADER */
@@ -24,7 +25,7 @@ header {
 
 .heading-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: stretch;
 }
 
@@ -32,6 +33,13 @@ h1 {
   text-align: center;
   font-size: 70px;
   font-family: 'ZCOOL KuaiLe', cursive;
+  color: yellow;
+  padding-right: 150px;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: yellowgreen;
+  color: white;
 }
 
 .display-board{
@@ -101,6 +109,13 @@ main {
 #hates-text {
   color: red;
 }
+
+.winGame {
+  background-color: yellow;
+  color: white;
+  border: 2px solid black;
+}
+
 /* RULES */
 .rules {
   align-items: center;
