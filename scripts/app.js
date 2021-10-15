@@ -2,7 +2,6 @@ function init(){
   const grid = document.querySelector('.grid')
   const rules = document.querySelector('.rules')
   const startScreen = document.querySelector('.startScreen')
-  const winScreen = document.querySelector('.winGame')
   const button = document.querySelector('button')
   const scoreCount = document.getElementById('score')
   const livesCount = document.getElementById('lives')
@@ -23,8 +22,8 @@ function init(){
   // * Treats
   const treatClass = 'treat'
   const treats = []
-  const treatPositions = [1, 2, 4, 6, 7, 8, 10, 13, 14, 15, 16, 19, 23, 24, 25, 26, 28, 29, 30, 31, 36, 37, 38, 40, 41, 42, 45, 46, 47, 48, 51, 52, 53, 54, 55, 56, 57, 58, 59, 62, 64, 65, 70, 71, 72, 77, 78, 79, 81, 82, 83, 84, 85, 86, 88, 89, 91, 94, 96, 97, 98]
-  let treatCount = 61
+  const treatPositions = [1, 2, 4, 6, 7, 8, 10, 13, 14, 15, 16, 19, 23, 24, 25, 26, 28, 29, 30, 31, 36, 37, 38, 40, 41, 42, 46, 47, 48, 51, 52, 53, 54, 55, 56, 57, 58, 59, 62, 64, 65, 70, 71, 72, 77, 78, 79, 81, 82, 83, 84, 85, 86, 88, 89, 91, 94, 96, 97, 98]
+  let treatCount = 60
 
   // * Dog
   const dogClass = 'dog'
@@ -76,12 +75,11 @@ function init(){
     for (let i = 0; i < squareCount; i++){
       const square = document.createElement('div')
       square.classList.add('square')
-      square.innerText = i
+      // square.innerText = i
       grid.appendChild(square)
       squares.push(square)
     }
     addDog(dogStartingPosition)
-    // addHoover(hooverStartingPositions)
   }
 
   // * FENCE
@@ -103,7 +101,6 @@ function init(){
 
   // * TREAT FUNCTIONS
   function addTreat(){
-    // console.log('square[treatPosition]', squares[treatPosition])
     treatPositions.forEach((treat) => {
       squares[treat].classList.add(treatClass)
       treats.push(treat) //pushes individual treat into an array of treats
@@ -148,8 +145,6 @@ function init(){
       hoovers.push(hoover)
     })
   }
-  // let hooverInterval
-  // hooverInterval = setInterval(hooverDirection, 2000)
 
   function hooverDirection(hoover){
     hoover.moveInterval = setInterval(() => {
@@ -157,13 +152,13 @@ function init(){
       let direction = Math.floor(Math.random() * 4) // selects random element
     
       // hoover.previousPositions.push(hoover.currentPosition)
-      if (direction === 0 && !squares[hoover.currentPosition + 1].classList.contains('fence') && !squares[hoover.currentPosition + 1].classList.contains(ballClass) && squares[hoover.previousPositions[hoover.previousPositions.length - 2]] !== squares[hoover.currentPosition + 1]){
+      if (direction === 0 && squares[hoover.currentPosition + 1].classList.contains('fence') === Boolean(false) && squares[hoover.currentPosition + 1].classList.contains(ballClass) === Boolean(false) && squares[hoover.previousPositions[hoover.previousPositions.length - 2]] !== squares[hoover.currentPosition + 1]){
         hoover.currentPosition++
-      } else if (direction === 1 && !squares[hoover1CurrentPosition - 1].classList.contains('fence') && squares[hoover.previousPositions[hoover.previousPositions.length - 2]] !== squares[hoover.currentPosition - 1]){
+      } else if (direction === 1 && squares[hoover1CurrentPosition - 1].classList.contains('fence') === Boolean(false) && squares[hoover.currentPosition + 1].classList.contains(ballClass) === Boolean(false) && squares[hoover.previousPositions[hoover.previousPositions.length - 2]] !== squares[hoover.currentPosition - 1]){
         hoover.currentPosition--
-      } else if (direction === 2 && hoover.currentPosition + width <= width * width - 1 && !squares[hoover.currentPosition + width].classList.contains('fence') && squares[hoover.previousPositions[hoover.previousPositions.length - 2]] !== squares[hoover.currentPosition]){
+      } else if (direction === 2 && hoover.currentPosition + width <= width * width - 1 && squares[hoover.currentPosition + width].classList.contains('fence') === Boolean(false) && squares[hoover.currentPosition + 1].classList.contains(ballClass) === Boolean(false) && squares[hoover.previousPositions[hoover.previousPositions.length - 2]] !== squares[hoover.currentPosition]){
         hoover.currentPosition += width
-      } else if (direction === 3 && hoover.currentPosition >= width && !squares[hoover.currentPosition - width].classList.contains('fence') && squares[hoover.previousPositions[hoover.previousPositions.length - 2]] !== squares[hoover.currentPosition]){
+      } else if (direction === 3 && hoover.currentPosition >= width && squares[hoover.currentPosition - width].classList.contains('fence') === Boolean(false) && squares[hoover.currentPosition + 1].classList.contains(ballClass) === Boolean(false) && squares[hoover.previousPositions[hoover.previousPositions.length - 2]] !== squares[hoover.currentPosition]){
         hoover.currentPosition -= width
       }
 
@@ -221,9 +216,8 @@ function init(){
       squares[hoover1.currentPosition].classList.remove(hooverClass)
       squares[hoover2.currentPosition].classList.remove(hooverClass)
       squares[hoover3.currentPosition].classList.remove(hooverClass)
-      // winScreen.classList.remove('overlay')
-      // winScreen.style.display = 'flex'
-      alert(`YOU WON!!!! Your final score is: ${score}`)
+      alert(`YOU WON!!!! Thank you getting all those treats for Jojo! Your final score is: ${score}`)
+      // restartGame()
     }
   }
 
@@ -235,10 +229,8 @@ function init(){
   function on(){ // to turn overlay on
     grid.classList.add('overlay')
     rules.classList.add('overlay')
-    winScreen.classList.add('overlay')
     grid.style.display = 'none'
     rules.style.display = 'none'
-    winScreen.style.display = 'none'
   }
   
   function off(){ // to turn overlay off
@@ -280,14 +272,13 @@ function init(){
   }
 
   function startGame(){
-    // hooverInterval = setInterval(hooverDirection(hoover1), 2000)
     off()
     hooverDirection(hoover1)
     hooverDirection(hoover2)
     hooverDirection(hoover3)
 
-    // startGameSound.src = './sounds/start-pacman.mp3'
-    // startGameSound.play()
+    startGameSound.src = './sounds/start-pacman.mp3'
+    startGameSound.play()
   }
 
   document.addEventListener('keyup', handleKeyUp)

@@ -110,12 +110,6 @@ main {
   color: red;
 }
 
-.winGame {
-  background-color: yellow;
-  color: white;
-  border: 2px solid black;
-}
-
 /* RULES */
 .rules {
   align-items: center;
@@ -166,7 +160,7 @@ main {
 }
 
 .grid div {
-  border: 1px solid lightgrey;
+  border: 1px solid white;
   flex-grow: 1;
   height: 10%;
   width: 10%;
