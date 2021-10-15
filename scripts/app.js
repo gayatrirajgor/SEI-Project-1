@@ -7,6 +7,7 @@ function init(){
   const livesCount = document.getElementById('lives')
   const munchSound = document.getElementById('munch')
   const winSound = document.getElementById('win')
+  const dogCrySound = document.getElementById('dogCry')
   const startGameSound = document.getElementById('start-game')
   let lives = 3
   let score = 0
@@ -179,6 +180,8 @@ function init(){
   // * COLLISION
   // if collision is detected then dog position is reset to starting position and lives - 1
   function detectCollision(){
+    dogCrySound.src = './sounds/dog_cry.mp3'
+    dogCrySound.play()
     squares[dogCurrentPosition].classList.remove(dogClass)
     dogCurrentPosition = 0
     squares[dogCurrentPosition].classList.add(dogClass)
