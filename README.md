@@ -1,6 +1,8 @@
 # Run Jojo Run - A PacMan Game 🎮
 
-This game was deployed via GitHub pages and works best on a desktop with a keyboard. [Play the game here!](https://gayatrirajgor.github.io/SEI-Project-1/)
+This game was deployed via GitHub pages and works best on a desktop with a keyboard. [Play the game here!](https://gayatrirajgor.github.io/SEI-Project-1/) 🐶
+
+![homepage](assets/homepage.png)
 
 ## Brief 📃
 * Render a game in the browser
@@ -30,6 +32,8 @@ for (let i = 0; i < squareCount; i++){
       squares.push(square)
     }
 ```
+
+![grid](assets/grid.png)
 
 ### Player Movements
 The player is able to move Jojo using the arrow keys, however they cannot enter a square where a fence is located. 
