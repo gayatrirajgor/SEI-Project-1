@@ -27,7 +27,6 @@ JavaScript and DOM manipulation were used to create the game’s grid. Using a f
 for (let i = 0; i < squareCount; i++){
       const square = document.createElement('div')
       square.classList.add('square')
-      // square.innerText = i
       grid.appendChild(square)
       squares.push(square)
     }
