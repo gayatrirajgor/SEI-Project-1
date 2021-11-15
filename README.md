@@ -56,3 +56,7 @@ const key = event.keyCode
     }
 ```
 
+### Future Ideas
+* Mobile compatability
+* Adding a scoreboard
+* Add difficult levels
