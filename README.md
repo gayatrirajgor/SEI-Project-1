@@ -96,7 +96,7 @@ const key = event.keyCode
 ```
 
 ### Collisions 
-When the player collides with the hoover, a life is lost and the function `checkForLives()` is invoked. The function determines how many lives are remaining, and if the lives count equals zero, the game ends and an alert appears, informing the player of their score.
+When the player collides with the hoover, a life is lost and the function `checkForLives()` is invoked. The player is then sent back to the starting positon. The `checkForLives()` function determines how many lives are remaining, and if the lives count equals zero, the game ends and an alert appears, informing the player of their score.
 
 ### Special Food
 When the player enters a cell that contains a class of treat, 20 points is added to the score and the treat class is removed from that cell. I also added sound each time a treat had been eaten. 
