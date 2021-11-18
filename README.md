@@ -31,7 +31,7 @@ for (let i = 0; i < squareCount; i++){
       squares.push(square)
     }
 ```
-I placed an overlay over the grid location to hide it on the home page. This enabled me to block the player from playing the game before it began. When the page loads, the overlay function is called with the function `on()`, which then sets the overlay. The orverlay is switched off when the player presses the start game button, using the `off()` method.
+I placed an overlay over the grid location to hide it on the home page. This enabled me to block the player from playing the game before it began. When the page loads, the overlay function is called with the function `on()`, which then sets the overlay. The overlay is switched off when the player presses the start game button, using the `off()` method.
 
 ```js
  // * Overlay 
