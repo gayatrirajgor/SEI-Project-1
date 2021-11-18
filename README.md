@@ -93,7 +93,7 @@ const key = event.keyCode
     addDog(dogCurrentPosition)
 ```
 ### Special Food
-When the player enters a cell that contains a class of treat, 20 points is added to the score and the treat class is removed from that cell. 
+When the player enters a cell that contains a class of treat, 20 points is added to the score and the treat class is removed from that cell. I also added sound each time a treat had been eaten. 
 
 ```js
 function removeTreat(){
@@ -108,7 +108,32 @@ function removeTreat(){
     }
   }
 ```
+When the player enters a cell that contains a tennis ball, 50 points is added to the score and the hoovers are sent back to their starting positions. The hoovers then begin to flash and are held in their starting positions for 10 seconds; this was achieved using `setTimeOut`. The code snippet below shows how I achieved this. 
 
+```js
+function removeBall(){
+    if (squares[dogCurrentPosition].classList.contains(ballClass)){
+      squares[dogCurrentPosition].classList.remove(ballClass)
+      score += 50
+      scoreCount.innerText = score
+      ballFound(hoover1)
+      ballFound(hoover2)
+      ballFound(hoover3)
+    }
+}
+
+function ballFound(hoover) {
+    squares[hoover.currentPosition].classList.remove(hoover.class)
+    hoover.currentPosition = hoover.startingPosition
+    squares[hoover.currentPosition].classList.add(hoover.class)
+    squares[hoover.currentPosition].classList.add(blinkClass)
+    clearInterval(hoover.moveInterval)
+    setTimeout(() => {
+      hooverDirection(hoover)
+      squares[hoover.currentPosition].classList.remove(blinkClass)
+    }, 10000)
+  }
+```
 
 ### Future Ideas
 * Mobile compatability
