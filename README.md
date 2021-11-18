@@ -31,6 +31,20 @@ for (let i = 0; i < squareCount; i++){
       squares.push(square)
     }
 ```
+I created arrays of the positions and used a forEach to add the class to those cells to determine which place the treats and fences will hold on the grid.
+
+```js
+
+const fencesPosition = [5, 11, 12, 17, 18, 20, 21, 22, 27, 32, 33, 34, 35, 39, 43, 44, 49, 60, 61, 63, 66, 68, 69, 73, 74, 75, 76, 80, 87, 92, 95, 99] 
+
+function createFence(){
+    fencesPosition.forEach((fence) => {
+      squares[fence].classList.add(fenceClass)
+      fences.push(fence) //pushes individual fence into an array of fences
+    })
+}
+```
+
 I placed an overlay over the grid location to hide it on the home page. This enabled me to block the player from playing the game before it began. When the page loads, the overlay function is called with the function `on()`, which then sets the overlay. The overlay is switched off when the player presses the start game button, using the `off()` method.
 
 ```js
