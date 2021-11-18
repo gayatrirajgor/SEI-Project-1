@@ -141,7 +141,10 @@ function ballFound(hoover) {
   }
 ```
 
-### Future Ideas
+## Bugs
+* The hoovers can relocate to cells that have a fence, making it appear as if they have disappeared from the grid until they reach a cell that does not have a fence.
+
+## Future Ideas
 * Mobile compatability
 * Adding a scoreboard
 * Add difficult levels
