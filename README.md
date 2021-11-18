@@ -18,6 +18,7 @@ This game was deployed via GitHub pages and works best on a desktop with a keybo
 * CSS3
 * JavaScript
 * Git, GitHub & GitHub Pages
+* Google Fonts
 
 ## Approach 
 ### Grid 
@@ -31,7 +32,7 @@ for (let i = 0; i < squareCount; i++){
       squares.push(square)
     }
 ```
-I created arrays of the positions and used a forEach to add the class to those cells to determine which place the treats and fences will hold on the grid.
+To show the treats and fences on the grid, I built arrays of the positions and used forEach to add the class to those cells to determine which position the treats and fences will fill on the grid.
 
 ```js
 
