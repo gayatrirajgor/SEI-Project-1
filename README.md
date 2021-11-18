@@ -77,6 +77,23 @@ const key = event.keyCode
     
     addDog(dogCurrentPosition)
 ```
+### Special Food
+When the player enters a cell that contains a class of treat, 20 points is added to the score and the treat class is removed from that cell. 
+
+```js
+function removeTreat(){
+    if (squares[dogCurrentPosition].classList.contains(treatClass)){
+      squares[dogCurrentPosition].classList.remove(treatClass)
+      treatCount -= 1
+      console.log('TREAT COUNT:', treatCount)
+      score += 20
+      scoreCount.innerText = score
+      munchSound.src = './sounds/munch.mp3'
+      munchSound.play()
+    }
+  }
+```
+
 
 ### Future Ideas
 * Mobile compatability
