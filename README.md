@@ -1,5 +1,7 @@
 # Run Jojo Run - A PacMan Game 🎮
 
+My first project at GA London's Software Engineering Immersive course was to design a grid-based game that would be rendered in the browser using HTML, CSS, and JavaScript. The project was to be completed individually in one week.
+
 This game was deployed via GitHub pages and works best on a desktop with a keyboard. [Play the game here!](https://gayatrirajgor.github.io/SEI-Project-1/) 🐶
 
 ![homepage](assets/homepage.png)
