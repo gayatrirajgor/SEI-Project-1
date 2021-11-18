@@ -74,6 +74,8 @@ const key = event.keyCode
     } else {
       console.log('INVALID KEY PRESSED')
     }
+    
+    addDog(dogCurrentPosition)
 ```
 
 ### Future Ideas
