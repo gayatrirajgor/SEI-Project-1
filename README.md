@@ -21,6 +21,7 @@ This game was deployed via GitHub pages and works best on a desktop with a keybo
 * JavaScript
 * Git, GitHub & GitHub Pages
 * Google Fonts
+* Animate.stlye - CSS Animations
 
 ## Approach 
 ### Grid 
