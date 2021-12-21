@@ -169,7 +169,7 @@ function ballFound(hoover) {
 ## 6. Wins and Challenges 🏆
 ### Wins
 * Being able to create this game after 3 weeks of learning.
-* Successfully implementing  
+* Successfully implementing CSS styling and animations.   
 
 ### Challenges
 * Getting the hoovers to stay in their initial positions for an extended period of time was a significant challenge during this project. I overcome this difficulty by using `setTimeout` after doing some study and playing with the code.
