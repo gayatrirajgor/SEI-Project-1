@@ -117,10 +117,10 @@ const key = event.keyCode
 ```
 
 ### Collisions 
-When the player collides with the hoover, a life is lost and the function `checkForLives()` is invoked. The player is then sent back to the starting positon. The `checkForLives()` function determines how many lives are remaining, and if the lives count equals zero, the game ends and an alert appears, informing the player of their score.
+When the player collides with the hoover, a life is lost and the function `checkForLives()` is invoked. The player is then sent back to the starting position. The `checkForLives()` function determines how many lives are remaining, and if the lives count equals zero, the game ends and an alert appears, informing the player of their score.
 
 ### Special Food
-When the player enters a cell that contains a class of treat, 20 points is added to the score and the treat class is removed from that cell. I also added sound each time a treat had been eaten. 
+When the player enters a cell that contains a class of treats, 20 points are added to the score and the treat class is removed from that cell. I also added sound each time a treat had been eaten. 
 
 ```js
 function removeTreat(){
@@ -135,7 +135,7 @@ function removeTreat(){
     }
   }
 ```
-When the player enters a cell that contains a tennis ball, 50 points is added to the score and the hoovers are sent back to their starting positions. The hoovers then begin to flash and are held in their starting positions for 10 seconds; this was achieved using `setTimeout`. The code snippet below shows how I achieved this. 
+When the player enters a cell that contains a tennis ball, 50 points are added to the score and the hoovers are sent back to their starting positions. The hoovers then begin to flash and are held in their starting positions for 10 seconds; this was achieved using `setTimeout`. The code snippet below shows how I achieved this. 
 
 ```js
 function removeBall(){
@@ -176,6 +176,6 @@ function ballFound(hoover) {
 
 <a name="future"></a>
 ## 7. Future Ideas 💭
-* Mobile compatability
+* Mobile compatibility
 * Adding a scoreboard
 * Add difficult levels
