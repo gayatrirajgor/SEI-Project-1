@@ -1,12 +1,30 @@
 # Run Jojo Run - A PacMan Game 🎮
 
+<!--- My first project at GA London's Software Engineering Immersive course was to design a grid-based game that would be rendered in the browser using HTML, CSS, and JavaScript. The project was to be completed individually in one week.
+
+This game was deployed via GitHub pages and works best on a desktop with a keyboard. [Play the game here!](https://gayatrirajgor.github.io/SEI-Project-1/) 🐶 --->
+
+## Table of Contents
+|No. | Content                      | 
+|----|------------------------------|
+|1   | [Project Overview](#overview)|
+|2   | [Project Brief](#brief)      |  
+|3   | [Technologies Used](#tech)   |  
+|4   | [Approach](#approach)        |
+|5   | [Bugs](#bugs)                |
+|6   | [Wins & Challenges](#wins)   |
+|7   | [Future Ideas](#future)      |
+
+<a name="overview"></a>
+## 1. Overview
 My first project at GA London's Software Engineering Immersive course was to design a grid-based game that would be rendered in the browser using HTML, CSS, and JavaScript. The project was to be completed individually in one week.
 
 This game was deployed via GitHub pages and works best on a desktop with a keyboard. [Play the game here!](https://gayatrirajgor.github.io/SEI-Project-1/) 🐶
 
 ![homepage](assets/homepage.png)
 
-## Brief 📃
+<a name="brief"></a>
+## 2. Brief 📃
 * Render a game in the browser
 * Include separate HTML, CSS, JavaScript files
 * Design logic for winning & visually display which player won
@@ -15,7 +33,8 @@ This game was deployed via GitHub pages and works best on a desktop with a keybo
 * Deploy your game online 
 * Use semantic markup for HTML and CSS
 
-## Technologies 💻
+<a name="tech"></a>
+## 3. Technologies 💻
 * HTML5
 * CSS3
 * JavaScript
@@ -23,7 +42,8 @@ This game was deployed via GitHub pages and works best on a desktop with a keybo
 * Google Fonts
 * Animate.stlye - CSS Animations
 
-## Approach 
+<a name="approach"></a>
+## 4. Approach ✏️
 ### Grid 
 JavaScript and DOM manipulation were used to create the game’s grid. Using a for loop, I created new divs that were appended as children to the parent div.
 
@@ -141,11 +161,16 @@ function ballFound(hoover) {
     }, 10000)
   }
 ```
-
-## Bugs
+<a name="bugs"></a>
+## 5. Bugs 🛠️
 * The hoovers can relocate to cells that have a fence, making it appear as if they have disappeared from the grid until they reach a cell that does not have a fence.
 
-## Future Ideas
+<a name="wins"></a>
+## 6. Wins and Challenges 🏆
+### Wins
+
+<a name="future"></a>
+## 7. Future Ideas 💭
 * Mobile compatability
 * Adding a scoreboard
 * Add difficult levels
