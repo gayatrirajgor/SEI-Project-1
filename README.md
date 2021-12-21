@@ -135,7 +135,7 @@ function removeTreat(){
     }
   }
 ```
-When the player enters a cell that contains a tennis ball, 50 points is added to the score and the hoovers are sent back to their starting positions. The hoovers then begin to flash and are held in their starting positions for 10 seconds; this was achieved using `setTimeOut`. The code snippet below shows how I achieved this. 
+When the player enters a cell that contains a tennis ball, 50 points is added to the score and the hoovers are sent back to their starting positions. The hoovers then begin to flash and are held in their starting positions for 10 seconds; this was achieved using `setTimeout`. The code snippet below shows how I achieved this. 
 
 ```js
 function removeBall(){
@@ -168,6 +168,11 @@ function ballFound(hoover) {
 <a name="wins"></a>
 ## 6. Wins and Challenges 🏆
 ### Wins
+* Being able to create this game after 3 weeks of learning.
+* Successfully implementing  
+
+### Challenges
+* Getting the hoovers to stay in their initial positions for an extended period of time was a significant challenge during this project. I overcome this difficulty by using `setTimeout` after doing some study and playing with the code.
 
 <a name="future"></a>
 ## 7. Future Ideas 💭
