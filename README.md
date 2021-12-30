@@ -1,3 +1,5 @@
+![ga-logo](https://user-images.githubusercontent.com/59033443/147769849-b56e2336-7aa4-418e-9be2-ab97e6b6a7c7.png)
+
 # Run Jojo Run - A PacMan Game 🎮
 
 <!--- My first project at GA London's Software Engineering Immersive course was to design a grid-based game that would be rendered in the browser using HTML, CSS, and JavaScript. The project was to be completed individually in one week.
