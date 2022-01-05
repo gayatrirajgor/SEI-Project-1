@@ -11,11 +11,12 @@ This game was deployed via GitHub pages and works best on a desktop with a keybo
 |----|------------------------------|
 |1   | [Project Overview](#overview)|
 |2   | [Project Brief](#brief)      |  
-|3   | [Technologies Used](#tech)   |  
-|4   | [Approach](#approach)        |
-|5   | [Bugs](#bugs)                |
-|6   | [Wins & Challenges](#wins)   |
-|7   | [Future Ideas](#future)      |
+|3   | [Technologies Used](#tech)   |
+|4   | [Concept](#concept)          |
+|5   | [Approach](#approach)        |
+|6   | [Bugs](#bugs)                |
+|7   | [Wins & Challenges](#wins)   |
+|8   | [Future Ideas](#future)      |
 
 <a name="overview"></a>
 ## 1. Overview
@@ -44,8 +45,12 @@ This game was deployed via GitHub pages and works best on a desktop with a keybo
 * Google Fonts
 * Animate.style - CSS Animations
 
+<a name="concept"></a>
+## 4. Concept 🧐
+I decided to make a Pac Man-themed game, using my dog, Jojo, as the influence for the theming and design. In this game, Henry the Hoover(s) is out to get Jojo, and Jojo must collect as many treats as she can while avoiding contact with the hoovers. If Jojo collects a tennis ball, the hoovers return to their original position for 10 seconds, allowing Jojo enough time to travel around and gather all of the treats.
+
 <a name="approach"></a>
-## 4. Approach ✏️
+## 5. Approach ✏️
 ### Grid 
 JavaScript and DOM manipulation were used to create the game’s grid. Using a for loop, I created new divs that were appended as children to the parent div.
 
@@ -164,11 +169,11 @@ function ballFound(hoover) {
   }
 ```
 <a name="bugs"></a>
-## 5. Bugs 🛠️
+## 6. Bugs 🛠️
 * The hoovers can relocate to cells that have a fence, making it appear as if they have disappeared from the grid until they reach a cell that does not have a fence.
 
 <a name="wins"></a>
-## 6. Wins and Challenges 🏆
+## 7. Wins and Challenges 🏆
 ### Wins
 * Being able to create this game after 3 weeks of learning.
 * Successfully implementing CSS styling and animations.   
@@ -177,7 +182,7 @@ function ballFound(hoover) {
 * Getting the hoovers to stay in their initial positions for an extended period of time was a significant challenge during this project. I overcome this difficulty by using `setTimeout` after doing some study and playing with the code.
 
 <a name="future"></a>
-## 7. Future Ideas 💭
+## 8. Future Ideas 💭
 * Mobile compatibility
 * Adding a scoreboard
 * Add difficult levels
