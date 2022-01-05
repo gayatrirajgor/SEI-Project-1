@@ -1,4 +1,4 @@
-![ga-logo](https://user-images.githubusercontent.com/59033443/147769849-b56e2336-7aa4-418e-9be2-ab97e6b6a7c7.png)
+ ![ga-logo](https://user-images.githubusercontent.com/59033443/147769849-b56e2336-7aa4-418e-9be2-ab97e6b6a7c7.png)
 
 # Run Jojo Run - A PacMan Game 🎮
 
